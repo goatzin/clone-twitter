@@ -3,7 +3,7 @@ import TabBar from '../tab-bar'
 
 const Layout = ({ children }: any) => {
   return (
-    <div>
+    <div className='flex min-w-min min-h-min justify-center'>
       <TabBar />
       {children}
     </div>
