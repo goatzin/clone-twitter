@@ -8,9 +8,7 @@ const Home: NextPage = () => {
   const { backgroundTheme } = useContext(ThemeContext)
   return (
     <div className='w-timeline border border-gray-100 flex flex-col items-center py-2 px-5 mx-4'>
-      <div className='w-full flex justify-between items-center' style={{
-        color: backgroundTheme === 'light' ? 'black' : 'white'
-      }}>
+      <div className={`bg-${backgroundTheme}-text w-full flex justify-between items-center`}>
         <div className='flex justify-center'>
           <h1 className='text-xl font-bold'>
             Home

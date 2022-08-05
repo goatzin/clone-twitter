@@ -9,10 +9,8 @@ const PostBox = () => {
     <div className='w-full flex flex-row mt-4'>
       <div className='flex justify-center'>
         <Link href='/username'>
-          <a className='w-12 h-12 border rounded-full flex justify-center items-center hover:bg-gray-100 active:bg-gray-200 duration-300'>
-            <RiUser3Line className='w-7 h-7' style={{
-              color: backgroundTheme === 'light' ? 'gray' : 'white'
-            }} />
+          <a className='w-12 h-12 border rounded-full flex justify-center items-center hover:bg-gray-300 active:bg-gray-400 duration-300'>
+            <RiUser3Line className={`w-7 h-7 text-${backgroundTheme}-icon`} />
           </a>
         </Link>
       </div>

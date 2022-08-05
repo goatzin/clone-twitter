@@ -18,20 +18,29 @@ module.exports = {
         light: {
           color: '#ffffff',
           text: '#000000',
-          icon: '#000000'
+          icon: '#000000',
+          ticon: '#1d9cf0',
+          thover: '#eff6ff',
+          tactive: '#dbeafe'
         },
         dark: {
           color: '#15202b',
           text: '#ffffff',
-          icon: '#d3d3d3'
+          icon: '#d3d3d3',
+          ticon: '#d3d3d3',
+          thover: '#d6d3d1',
+          tactive: '#a8a29e'
         },
         black: {
           color: '#000000',
           text: '#ffffff',
-          icon: '#d3d3d3'
+          icon: '#d3d3d3',
+          ticon: '#d3d3d3',
+          thover: '#d6d3d1',
+          tactive: '#a8a29e'
         },
         default: {
-          blue: '#1d9cf0'
+          color: '#1d9cf0'
         }
       }
     }
