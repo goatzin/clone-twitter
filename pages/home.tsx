@@ -3,14 +3,13 @@ import type { NextPage } from 'next'
 import { HiOutlineSparkles } from 'react-icons/hi'
 import PostBox from '../components/post-box'
 import { ThemeContext } from '../utils/theme'
-import s from '../styles/timeline.module.css'
 
 const Home: NextPage = () => {
-  const { theme } = useContext(ThemeContext)
+  const { backgroundTheme } = useContext(ThemeContext)
   return (
-    <div className={`${s.default_width} border border-gray-100 flex flex-col items-center py-2 px-5 mx-4`}>
+    <div className='w-timeline border border-gray-100 flex flex-col items-center py-2 px-5 mx-4'>
       <div className='w-full flex justify-between items-center' style={{
-        color: theme[0] === 'light' ? 'black' : 'white'
+        color: backgroundTheme === 'light' ? 'black' : 'white'
       }}>
         <div className='flex justify-center'>
           <h1 className='text-xl font-bold'>

@@ -1,13 +1,15 @@
 import React, { useCallback, useState } from 'react'
 
 interface ThemeValue {
-  theme: Array<string>
+  backgroundTheme: string
+  colorTheme: string
   handleBackground: () => any
   handleColors: () => any
 }
 
 export const ThemeContext = React.createContext<ThemeValue>({
-  theme: ['light', 'blue'],
+  backgroundTheme: 'light',
+  colorTheme: 'default',
   handleBackground: () => null,
   handleColors: () => null
 })
@@ -17,21 +19,23 @@ interface Props {
 }
 
 const ThemeProvider: React.FC<Props> = ({ children }) => {
-  const [theme, setTheme] = useState(['light', 'blue'])
+  const [backgroundTheme, setBackgroundTheme] = useState('light')
+  const [colorTheme, setColorTheme] = useState('blue')
   const handleBackground = useCallback(() => {
-    if (theme[0] === 'light') {
-      setTheme(['dark', theme[1]])
+    if (backgroundTheme === 'light') {
+      setBackgroundTheme('dark')
     } else {
-      setTheme(['light', theme[1]])
+      setBackgroundTheme('light')
     }
-  }, [theme, setTheme])
+  }, [backgroundTheme, setBackgroundTheme])
   const handleColors = useCallback(() => {
-    // fix this after
-    setTheme([theme[0], ''])
-  }, [theme, setTheme])
+  }, [colorTheme, setColorTheme])
 
   return (
-    <ThemeContext.Provider value={{ theme, handleBackground, handleColors }}>
+    <ThemeContext.Provider value={{
+      backgroundTheme, handleBackground,
+      colorTheme, handleColors
+    }}>
       {children}
     </ThemeContext.Provider>
   )
