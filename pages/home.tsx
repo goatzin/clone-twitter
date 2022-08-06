@@ -7,8 +7,10 @@ import { ThemeContext } from '../utils/theme'
 const Home: NextPage = () => {
   const { backgroundTheme } = useContext(ThemeContext)
   return (
-    <div className='w-timeline border border-gray-100 flex flex-col items-center py-2 px-5 mx-4'>
-      <div className={`bg-${backgroundTheme}-text w-full flex justify-between items-center`}>
+    <div className='w-timeline border-l border-r border-gray-600 flex flex-col items-center mx-4' style={{
+      color: backgroundTheme === 'light' ? '#000000' : '#ffffff',
+    }}>
+      <div className='w-full flex justify-between items-center py-2 px-5'>
         <div className='flex justify-center'>
           <h1 className='text-xl font-bold'>
             Home
@@ -19,6 +21,7 @@ const Home: NextPage = () => {
         </button>
       </div>
       <PostBox />
+      <div className='min-w-full border-b border-gray-600'></div>
     </div>
   )
 }

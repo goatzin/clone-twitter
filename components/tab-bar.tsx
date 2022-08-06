@@ -18,37 +18,7 @@ const TabBar: React.FC = () => {
   const { backgroundTheme, colorTheme, handleBackground, handleColors } = useContext(ThemeContext)
   const [currentPage, setCurrentPage] = useState('')
   const router = useRouter()
-  const buttonIcons = [
-    {
-      id: 1, path: '/home',
-      actived: <RiHome7Fill />, desatived: <RiHome7Line />
-    },
-    {
-      id: 2, path: '/explorer',
-      actived: <RiSearch2Fill />, desatived: <RiSearch2Line />
-    },
-    {
-      id: 3, path: '/notifications',
-      actived: <RiNotification2Fill />, desatived: <RiNotification2Line />
-    },
-    {
-      id: 4, path: '/messages',
-      actived: <RiMailFill />, desatived: <RiMailLine />
-    },
-    {
-      id: 5, path: '/i/bookmarks',
-      actived: <RiBookmarkFill />, desatived: <RiBookmarkLine />
-    },
-    {
-      id: 6, path: '/username/lists',
-      actived: <RiFileList2Fill />, desatived: <RiFileList2Line />
-    },
-    {
-      id: 7, path: '/username',
-      actived: <RiUser3Fill />, desatived: <RiUser3Line />
-    },
-  ]
-
+  let twitterHover = ['more light', 'more dark']
   const handlePage = useCallback(() => {
     setCurrentPage(window.location.pathname)
   }, [])
@@ -59,43 +29,113 @@ const TabBar: React.FC = () => {
     }
   }, [router])
 
+  useEffect(() => {
+    if (backgroundTheme !== 'light') {
+      twitterHover = ['', '']
+    } else {
+      switch (colorTheme) {
+        case '#1d9cf0':
+          twitterHover = ['', '']
+          break
+        default:
+          break
+      }
+    }
+  }, [colorTheme])
+
   return (
     <div>
-      <ul className={`text-${backgroundTheme}-icon flex flex-col items-center justify-between min-h-screen w-17`}>
+      <ul className='flex flex-col items-center justify-between min-h-screen w-17' style={{
+        color: backgroundTheme === 'light' ? '#000000' : '#d3d3d3'
+      }}>
         <li className='flex flex-col w-max items-center'>
           <Link href='/home'>
-            <a className={` w-outsideIcon h-outsideIcon flex items-center justify-center border border-transparent rounded-full hover:bg-${backgroundTheme}-thover active:bg-${backgroundTheme}-tactive duration-300`}>
-              <BsTwitter className={`w-icon h-icon bg-${backgroundTheme}-ticon`} />
+            <a className={`w-outsideIcon h-outsideIcon flex items-center justify-center border border-transparent rounded-full hover:bg-[${twitterHover[0]}] active:bg-[${twitterHover[1]}] duration-300`}>
+              <BsTwitter className='w-icon h-icon' style={{
+                color: backgroundTheme === 'light' ? '#1d9cf0' : '#d3d3d3'
+              }} />
             </a>
           </Link>
-          {buttonIcons.map((button) =>
-            <Link href={button.path} key={button.id}>
-              <a className='w-outsideIcon first:w-icon first:h-icon h-outsideIcon flex items-center justify-center border border-transparent rounded-full hover:bg-gray-300 active:bg-gray-400 duration-300'>
-                {currentPage === button.path
-                  ? button.actived
-                  : button.desatived
-                }
-              </a>
-            </Link>
-          )}
-          <div className='border border-transparent w-outsideIcon h-outsideIcon flex items-center justify-center rounded-full hover:bg-gray-100 active:bg-gray-200 duration-300'>
-            <button className={`border-${backgroundTheme}-icon flex items-center justify-center w-icon h-icon border-2 rounded-full bg-transparent`}>
+          <Link href='/home'>
+            <a className='w-outsideIcon h-outsideIcon flex items-center justify-center border border-transparent rounded-full hover:bg-gray-300 active:bg-gray-400 duration-300'>
+              {currentPage === '/home'
+                ? <RiHome7Fill className='w-icon h-icon' />
+                : <RiHome7Line className='w-icon h-icon' />
+              }
+            </a>
+          </Link>
+          <Link href='/explorer'>
+            <a className='w-outsideIcon h-outsideIcon flex items-center justify-center border border-transparent rounded-full hover:bg-gray-300 active:bg-gray-400 duration-300'>
+              {currentPage === '/explorer'
+                ? <RiSearch2Fill className='w-icon h-icon' />
+                : <RiSearch2Line className='w-icon h-icon' />
+              }
+            </a>
+          </Link>
+          <Link href='/notifications'>
+            <a className='w-outsideIcon h-outsideIcon flex items-center justify-center border border-transparent rounded-full hover:bg-gray-300 active:bg-gray-400 duration-300'>
+              {currentPage === '/notifications'
+                ? <RiNotification2Fill className='w-icon h-icon' />
+                : <RiNotification2Line className='w-icon h-icon' />
+              }
+            </a>
+          </Link>
+          <Link href='/messages'>
+            <a className='w-outsideIcon h-outsideIcon flex items-center justify-center border border-transparent rounded-full hover:bg-gray-300 active:bg-gray-400 duration-300'>
+              {currentPage === '/messages'
+                ? <RiMailFill className='w-icon h-icon' />
+                : <RiMailLine className='w-icon h-icon' />
+              }
+            </a>
+          </Link>
+          <Link href='/i/bookmarks'>
+            <a className='w-outsideIcon h-outsideIcon flex items-center justify-center border border-transparent rounded-full hover:bg-gray-300 active:bg-gray-400 duration-300'>
+              {currentPage === '/i/bookmarks'
+                ? <RiBookmarkFill className='w-icon h-icon' />
+                : <RiBookmarkLine className='w-icon h-icon' />
+              }
+            </a>
+          </Link>
+          <Link href='/username/lists'>
+            <a className='w-outsideIcon h-outsideIcon flex items-center justify-center border border-transparent rounded-full hover:bg-gray-300 active:bg-gray-400 duration-300'>
+              {currentPage === '/username/lists'
+                ? <RiFileList2Fill className='w-icon h-icon' />
+                : <RiFileList2Line className='w-icon h-icon' />
+              }
+            </a>
+          </Link>
+          <Link href='/username'>
+            <a className='w-outsideIcon h-outsideIcon flex items-center justify-center border border-transparent rounded-full hover:bg-gray-300 active:bg-gray-400 duration-300'>
+              {currentPage === '/username'
+                ? <RiUser3Fill className='w-icon h-icon' />
+                : <RiUser3Line className='w-icon h-icon' />
+              }
+            </a>
+          </Link>
+          <div className='border border-transparent w-outsideIcon h-outsideIcon flex items-center justify-center rounded-full hover:bg-gray-300 active:bg-gray-400 duration-300'>
+            <button className='flex items-center justify-center w-icon h-icon border-2 rounded-full bg-transparent' style={{
+              borderColor: backgroundTheme === 'light' ? '#000000' : '#d3d3d3'
+            }}>
               <RiMoreLine className='w-6 h-6' />
             </button>
           </div>
-          <button className={`bg-${colorTheme}-color w-outsideIcon h-outsideIcon flex items-center justify-center rounded-full hover:bg-blue-500 active:bg-blue-600 duration-300`}>
-            <RiQuillPenFill className={`w-icon h-icon text-${backgroundTheme}-color`} />
+          <button className='w-outsideIcon h-outsideIcon flex items-center justify-center rounded-full hover:bg-blue-500 active:bg-blue-600 duration-300' style={{
+            backgroundColor: colorTheme
+          }}>
+            <RiQuillPenFill className='w-icon h-icon text-white' />
           </button>
         </li>
         <li className='mb-5'>
-          <div className='flex items-center justify-center w-outsideIcon h-outsideIcon rounded-full hover:bg-gray-100 active:bg-gray-200 duration-300'>
-            <button className={`border-${backgroundTheme}-icon flex items-center justify-center border-2 w-10 h-10 rounded-full`}>
+          <div className='flex items-center justify-center w-outsideIcon h-outsideIcon rounded-full hover:bg-gray-300 active:bg-gray-400 duration-300'>
+            <button className='flex items-center justify-center border-2 w-10 h-10 rounded-full' style={{
+              borderColor: backgroundTheme === 'light' ? '#000000' : '#d3d3d3'
+            }}>
               <RiUser3Line className='w-icon h-icon' />
             </button>
-            <button className='border' onClick={handleBackground}>
-              toggle
-            </button>
           </div>
+          <button className='border' onClick={handleBackground}>
+            toggle
+          </button>
         </li>
       </ul>
     </div>

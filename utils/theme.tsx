@@ -9,7 +9,7 @@ interface ThemeValue {
 
 export const ThemeContext = React.createContext<ThemeValue>({
   backgroundTheme: 'light',
-  colorTheme: 'default',
+  colorTheme: '#1d9cf0',
   handleBackground: () => null,
   handleColors: () => null
 })
@@ -20,7 +20,7 @@ interface Props {
 
 const ThemeProvider: React.FC<Props> = ({ children }) => {
   const [backgroundTheme, setBackgroundTheme] = useState('light')
-  const [colorTheme, setColorTheme] = useState('blue')
+  const [colorTheme, setColorTheme] = useState('#1d9cf0')
   const handleBackground = useCallback(() => {
     if (backgroundTheme === 'light') {
       setBackgroundTheme('dark')
