@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from 'react'
+import { colors } from '../libs/colors'
 
 interface ThemeValue {
   backgroundTheme: string
@@ -9,7 +10,7 @@ interface ThemeValue {
 
 export const ThemeContext = React.createContext<ThemeValue>({
   backgroundTheme: 'light',
-  colorTheme: '#1d9cf0',
+  colorTheme: colors.default,
   handleBackground: () => null,
   handleColors: () => null
 })
@@ -20,7 +21,7 @@ interface Props {
 
 const ThemeProvider: React.FC<Props> = ({ children }) => {
   const [backgroundTheme, setBackgroundTheme] = useState('light')
-  const [colorTheme, setColorTheme] = useState('#1d9cf0')
+  const [colorTheme, setColorTheme] = useState(colors.default)
   const handleBackground = useCallback(() => {
     if (backgroundTheme === 'light') {
       setBackgroundTheme('dark')

@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import { darkTheme, lightTheme } from '../../libs/colors'
 import { ThemeContext } from '../../utils/theme'
 import TabBar from '../tab-bar'
 
@@ -7,9 +8,9 @@ const Layout = ({ children }: any) => {
   return (
     <div className='flex min-w-full min-h-full justify-center' style={{
       background: backgroundTheme === 'light'
-        ? '#ffffff'
+        ? lightTheme.background
         : backgroundTheme === 'dark'
-          ? '#15202b'
+          ? darkTheme.background
           : '#000000'
     }}>
       <TabBar />

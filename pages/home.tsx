@@ -3,6 +3,7 @@ import type { NextPage } from 'next'
 import { HiOutlineSparkles } from 'react-icons/hi'
 import PostBox from '../components/post-box'
 import { ThemeContext } from '../utils/theme'
+import { darkTheme, lightTheme } from '../libs/colors'
 
 const Home: NextPage = () => {
   const { backgroundTheme } = useContext(ThemeContext)
@@ -16,7 +17,13 @@ const Home: NextPage = () => {
             Home
           </h1>
         </div>
-        <button className='w-9 h-9 flex justify-center items-center rounded-full hover:bg-gray-100 active:bg-gray-200 duration-300'>
+        <button className='w-9 h-9 flex justify-center items-center rounded-full hover:brightness-75 active:brightness-50 duration-300' style={{
+          backgroundColor: backgroundTheme === 'light'
+            ? lightTheme.background
+            : backgroundTheme === 'dark'
+              ? darkTheme.background
+              : '#000'
+        }}>
           <HiOutlineSparkles className='w-6 h-6' />
         </button>
       </div>
