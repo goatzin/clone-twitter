@@ -14,7 +14,7 @@ const PostBox = () => {
     <div className='flex flex-row mt-4 py-2 px-5'>
       <div className='flex justify-center text-neutral-300'>
         <Link href='/username'>
-          <a className='w-12 h-12 border rounded-full flex justify-center items-center hover:brightness-90 duration-300' style={{
+          <a className='w-12 h-12 border rounded-full flex justify-center items-center hover:brightness-90 duration-200' style={{
             backgroundColor: backgroundTheme === 'light'
               ? lightTheme.background
               : backgroundTheme === 'dark'
@@ -41,7 +41,7 @@ const PostBox = () => {
           }}>
             <ul className='flex'>
               <li>
-                <button className={`p-2 flex items-center justify-center rounded-full ${backgroundTheme === 'light' ? 'hover:bg-blue-100' : 'hover:brightness-75'} duration-300`} style={{
+                <button className={`p-2 flex items-center justify-center rounded-full ${backgroundTheme === 'light' ? 'hover:bg-blue-100' : 'hover:brightness-75'} duration-200`} style={{
                   backgroundColor: backgroundTheme === 'dark'
                     ? darkTheme.background
                     : backgroundTheme === 'black'
@@ -52,7 +52,7 @@ const PostBox = () => {
                 </button>
               </li>
               <li>
-                <button className={`p-2 flex items-center justify-center rounded-full ${backgroundTheme === 'light' ? 'hover:bg-blue-100' : 'hover:brightness-75'} duration-300`} style={{
+                <button className={`p-2 flex items-center justify-center rounded-full ${backgroundTheme === 'light' ? 'hover:bg-blue-100' : 'hover:brightness-75'} duration-200`} style={{
                   backgroundColor: backgroundTheme === 'dark'
                     ? darkTheme.background
                     : backgroundTheme === 'black'
@@ -63,7 +63,7 @@ const PostBox = () => {
                 </button>
               </li>
               <li>
-                <button className={`p-2 flex items-center justify-center rounded-full ${backgroundTheme === 'light' ? 'hover:bg-blue-100' : 'hover:brightness-75'} duration-300`} style={{
+                <button className={`p-2 flex items-center justify-center rounded-full ${backgroundTheme === 'light' ? 'hover:bg-blue-100' : 'hover:brightness-75'} duration-200`} style={{
                   backgroundColor: backgroundTheme === 'dark'
                     ? darkTheme.background
                     : backgroundTheme === 'black'
@@ -74,7 +74,7 @@ const PostBox = () => {
                 </button>
               </li>
               <li>
-                <button className={`p-2 flex items-center justify-center rounded-full ${backgroundTheme === 'light' ? 'hover:bg-blue-100' : 'hover:brightness-75'} duration-300`} style={{
+                <button className={`p-2 flex items-center justify-center rounded-full ${backgroundTheme === 'light' ? 'hover:bg-blue-100' : 'hover:brightness-75'} duration-200`} style={{
                   backgroundColor: backgroundTheme === 'dark'
                     ? darkTheme.background
                     : backgroundTheme === 'black'
@@ -85,7 +85,7 @@ const PostBox = () => {
                 </button>
               </li>
               <li>
-                <button className={`p-2 flex items-center justify-center rounded-full ${backgroundTheme === 'light' ? 'hover:bg-blue-100' : 'hover:brightness-75'} duration-300`} style={{
+                <button className={`p-2 flex items-center justify-center rounded-full ${backgroundTheme === 'light' ? 'hover:bg-blue-100' : 'hover:brightness-75'} duration-200`} style={{
                   backgroundColor: backgroundTheme === 'dark'
                     ? darkTheme.background
                     : backgroundTheme === 'black'
@@ -96,7 +96,7 @@ const PostBox = () => {
                 </button>
               </li>
               <li>
-                <button className={`p-2 flex items-center justify-center rounded-full ${backgroundTheme === 'light' ? 'hover:bg-blue-100' : 'hover:brightness-75'} duration-300`} style={{
+                <button className={`p-2 flex items-center justify-center rounded-full ${backgroundTheme === 'light' ? 'hover:bg-blue-100' : 'hover:brightness-75'} duration-200`} style={{
                   backgroundColor: backgroundTheme === 'dark'
                     ? darkTheme.background
                     : backgroundTheme === 'black'
@@ -107,7 +107,7 @@ const PostBox = () => {
                 </button>
               </li>
             </ul>
-            <button type='submit' className='flex items-center justify-center text-white rounded-full text-base font-bold px-5 py-1.5 hover:brightness-90 active:brightness-75 duration-300' style={{
+            <button type='submit' className='flex items-center justify-center text-white rounded-full text-base font-bold px-5 py-1.5 hover:brightness-90 active:brightness-75 duration-200' style={{
               background: colorTheme
             }}>
               Tweet

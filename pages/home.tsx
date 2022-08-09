@@ -19,7 +19,7 @@ const Home: NextPage = () => {
               Home
             </h1>
           </div>
-          <button className='w-9 h-9 flex justify-center items-center rounded-full hover:brightness-75 active:brightness-50 duration-300' style={{
+          <button className='w-9 h-9 flex justify-center items-center rounded-full hover:brightness-75 active:brightness-50 duration-200' style={{
             backgroundColor: backgroundTheme === 'light'
               ? lightTheme.background
               : backgroundTheme === 'dark'
