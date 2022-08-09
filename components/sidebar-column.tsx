@@ -1,6 +1,7 @@
 import React from 'react'
 import { FCard, HCard } from './cards'
 import SearchBar from './search-bar'
+import SidebarFooter from './sidebar-footer'
 
 interface Props {
   searchBar: boolean
@@ -14,6 +15,7 @@ const SideBarColumn: React.FC<Props> = ({ searchBar, hCard, fCard }) => {
       {searchBar && <SearchBar />}
       {hCard && <HCard />}
       {fCard && <FCard />}
+      <SidebarFooter />
     </div>
   )
 }

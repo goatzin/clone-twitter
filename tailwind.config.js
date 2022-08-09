@@ -5,6 +5,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        'xl': '1112px',
+        'short': {'raw': '(min-height: 615px)'},
+        'tall': {'raw': '(min-height: 705px)'}
+      },
       height: {
         icon: '26.25px',
         outsideIcon: '52px',

@@ -34,9 +34,9 @@ const TabBar: React.FC = () => {
       <ul className='flex flex-col items-center justify-between min-h-screen w-17' style={{
         color: backgroundTheme === 'light' ? lightTheme.icon : darkTheme.icon,
       }}>
-        <li className='flex flex-col w-max items-center'>
+        <li className='flex flex-col w-max items-center min-h-min'>
           <Link href='/home'>
-            <a className={`w-outsideIcon h-outsideIcon flex items-center justify-center rounded-full ${backgroundTheme === 'light' ? 'hover:bg-blue-100' : 'hover:brightness-75'} duration-300`} style={{
+            <a className={`tall:mb-2 w-outsideIcon h-outsideIcon flex items-center justify-center rounded-full ${backgroundTheme === 'light' ? 'hover:bg-blue-100' : 'hover:brightness-75'} duration-300`} style={{
               backgroundColor: backgroundTheme === 'dark'
                 ? darkTheme.background
                 : backgroundTheme === 'black'
@@ -49,7 +49,7 @@ const TabBar: React.FC = () => {
             </a>
           </Link>
           <Link href='/home'>
-            <a className='w-outsideIcon h-outsideIcon flex items-center justify-center rounded-full hover:brightness-75 duration-300' style={{
+            <a className='tall:mb-2 w-outsideIcon h-outsideIcon flex items-center justify-center rounded-full hover:brightness-75 duration-300' style={{
               backgroundColor: backgroundTheme === 'light'
                 ? lightTheme.background
                 : backgroundTheme === 'dark'
@@ -63,7 +63,7 @@ const TabBar: React.FC = () => {
             </a>
           </Link>
           <Link href='/explorer'>
-            <a className='w-outsideIcon h-outsideIcon flex items-center justify-center rounded-full hover:brightness-75 duration-300' style={{
+            <a className='tall:mb-2 w-outsideIcon h-outsideIcon flex items-center justify-center rounded-full hover:brightness-75 duration-300' style={{
               backgroundColor: backgroundTheme === 'light'
                 ? lightTheme.background
                 : backgroundTheme === 'dark'
@@ -77,7 +77,7 @@ const TabBar: React.FC = () => {
             </a>
           </Link>
           <Link href='/notifications'>
-            <a className='w-outsideIcon h-outsideIcon flex items-center justify-center rounded-full hover:brightness-75 duration-300' style={{
+            <a className='tall:mb-2 w-outsideIcon h-outsideIcon flex items-center justify-center rounded-full hover:brightness-75 duration-300' style={{
               backgroundColor: backgroundTheme === 'light'
                 ? lightTheme.background
                 : backgroundTheme === 'dark'
@@ -91,7 +91,7 @@ const TabBar: React.FC = () => {
             </a>
           </Link>
           <Link href='/messages'>
-            <a className='w-outsideIcon h-outsideIcon flex items-center justify-center rounded-full hover:brightness-75 duration-300' style={{
+            <a className='tall:mb-2 w-outsideIcon h-outsideIcon flex items-center justify-center rounded-full hover:brightness-75 duration-300' style={{
               backgroundColor: backgroundTheme === 'light'
                 ? lightTheme.background
                 : backgroundTheme === 'dark'
@@ -105,7 +105,7 @@ const TabBar: React.FC = () => {
             </a>
           </Link>
           <Link href='/i/bookmarks'>
-            <a className='w-outsideIcon h-outsideIcon flex items-center justify-center rounded-full hover:brightness-75 duration-300' style={{
+            <a className='hidden short:flex tall:mb-2 w-outsideIcon h-outsideIcon items-center justify-center rounded-full hover:brightness-75 duration-300' style={{
               backgroundColor: backgroundTheme === 'light'
                 ? lightTheme.background
                 : backgroundTheme === 'dark'
@@ -119,7 +119,7 @@ const TabBar: React.FC = () => {
             </a>
           </Link>
           <Link href='/username/lists'>
-            <a className='w-outsideIcon h-outsideIcon flex items-center justify-center rounded-full hover:brightness-75 duration-300' style={{
+            <a className='hidden short:flex tall:mb-2 w-outsideIcon h-outsideIcon items-center justify-center rounded-full hover:brightness-75 duration-300' style={{
               backgroundColor: backgroundTheme === 'light'
                 ? lightTheme.background
                 : backgroundTheme === 'dark'
@@ -133,7 +133,7 @@ const TabBar: React.FC = () => {
             </a>
           </Link>
           <Link href='/username'>
-            <a className='w-outsideIcon h-outsideIcon flex items-center justify-center rounded-full hover:brightness-75 duration-300' style={{
+            <a className='tall:mb-2 w-outsideIcon h-outsideIcon flex items-center justify-center rounded-full hover:brightness-75 duration-300' style={{
               backgroundColor: backgroundTheme === 'light'
                 ? lightTheme.background
                 : backgroundTheme === 'dark'
@@ -146,7 +146,7 @@ const TabBar: React.FC = () => {
               }
             </a>
           </Link>
-          <div className='w-outsideIcon h-outsideIcon flex items-center justify-center rounded-full hover:brightness-75 active:brightness-50 duration-300' style={{
+          <div className='tall:mb-2 w-outsideIcon h-outsideIcon flex items-center justify-center rounded-full hover:brightness-75 active:brightness-50 duration-300' style={{
             backgroundColor: backgroundTheme === 'light'
               ? lightTheme.background
               : backgroundTheme === 'dark'
