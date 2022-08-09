@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           content='a twitter clone to better explore my skills 
             and understand how a website works superficially'
         />
-        <link rel='icon' href='/favicon.ico' />
+        <link rel='icon' href='/twitter-icon.png' />
       </Head>
       <ThemeProvider>
         <Layout>
