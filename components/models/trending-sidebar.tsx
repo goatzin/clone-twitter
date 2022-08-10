@@ -26,7 +26,7 @@ export const Trending: React.FC<TrendingProps> = ({ topic, title, image, link })
           <span className='text-sm text-slate-400'>
             {topic} · Trending
           </span>
-          <h2 className='text-xl font-bold' style={{
+          <h2 className='text-base' style={{
             color: backgroundTheme === 'light'
               ? 'black'
               : 'white'
@@ -34,9 +34,13 @@ export const Trending: React.FC<TrendingProps> = ({ topic, title, image, link })
             {title}
           </h2>
         </div>
-        <div>
+        <div className='max-w-[68px] min-w-[68px] min-h-[68px] max-h-[68px] ml-2'>
           <Image
             src={image}
+            alt={title}
+            width={68}
+            height={68}
+            className='rounded-lg'
           />
         </div>
       </a>
@@ -61,7 +65,7 @@ export const HashTrending: React.FC<HashProps> = ({ title, content, link }) => {
             ? '#000'
             : ''
       }}>
-        <h2 className='text-xl font-bold' style={{
+        <h2 className='text-xl' style={{
           color: backgroundTheme === 'light'
             ? 'black'
             : 'white'
@@ -88,7 +92,7 @@ export const NoticesTrending: React.FC<NoticesProps> = ({ topic, title, time, im
   const { backgroundTheme } = useContext(ThemeContext)
   return (
     <Link href={link}>
-      <a className={`flex min-w-full justify-between py-3 px-4 ${backgroundTheme === 'light' ? 'bg-slate-50 hover:brightness-95' : 'hover:brightness-110'} duration-300`} style={{
+      <a className={`flex min-w-full justify-between py-3 px-4 items-center ${backgroundTheme === 'light' ? 'bg-slate-50 hover:brightness-95' : 'hover:brightness-110'} duration-300`} style={{
         background: backgroundTheme === 'dark'
           ? darkTheme.background
           : backgroundTheme === 'black'
@@ -99,7 +103,7 @@ export const NoticesTrending: React.FC<NoticesProps> = ({ topic, title, time, im
           <div className='text-slate-400 text-sm'>
             {topic} · {time}
           </div>
-          <h2 className='font-bold tracking-wide text-xl' style={{
+          <h2 className='tracking-wide text-base' style={{
             color: backgroundTheme === 'light'
               ? 'black'
               : 'white'
@@ -107,9 +111,15 @@ export const NoticesTrending: React.FC<NoticesProps> = ({ topic, title, time, im
             {title}
           </h2>
         </div>
-        <Image
-          src={image}
-        />
+        <div className='max-h-[68px] min-h-[68px] max-w-[68px] min-w-[68px] ml-2'>
+          <Image
+            src={image}
+            alt={title}
+            width={68}
+            height={68}
+            className='rounded-lg'
+          />
+        </div>
       </a>
     </Link>
   )

@@ -24,34 +24,34 @@ export const HCard: React.FC = () => {
       </h1>
       <div>
         <NoticesTrending
-          topic='WoodPecker'
+          topic='Outdoors'
           time='2 hours ago'
-          title='One woodpecker is picking'
-          image=''
+          title='A woodpecker was seen pecking'
+          image='/trending/woodpecker-trending.jpg'
           link=''
         />
         <HashTrending
-          title='#Something'
-          content='this is just a test my friend'
+          title="#IDon'tKnow"
+          content="I really don't know what to put here O_o"
           link=''
         />
         <Trending
-          topic='Nature'
-          title='Giant tree'
-          image=''
+          topic='News'
+          title='Ducks have evolved a lot, being considered dangerous to several countries'
+          image='/trending/duck-trending.jpg'
           link=''
         />
         <Trending
-          topic='Gaming'
-          title='New console has gone'
-          image=''
+          topic='Technology'
+          title='Dogs are crashing the economy by running online shopping bots'
+          image='/trending/dog-trending.jpg'
           link=''
         />
         <NoticesTrending
           topic='Politics'
           time='LIVE'
-          title='One monkey is in top'
-          image=''
+          title='Our beloved new president made his address at a party'
+          image='/trending/monkey-trending.jpg'
           link=''
         />
       </div>
@@ -92,9 +92,21 @@ export const FCard: React.FC = () => {
       </h1>
       <div>
         <WhoToFollow
-          image=''
+          image='/icons/woodpecker-icon.jpg'
           nickname='Woodpecker'
           username='@TheIncredibleWoodpecker'
+          link=''
+        />
+        <WhoToFollow
+          image='/icons/duck-icon.jpg'
+          nickname='Tonny Delb'
+          username='@Delb'
+          link=''
+        />
+        <WhoToFollow
+          image='/icons/monkey-icon.jpg'
+          nickname='President'
+          username='@TheMonkey'
           link=''
         />
       </div>
