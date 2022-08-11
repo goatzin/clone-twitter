@@ -3,6 +3,7 @@ import Head from 'next/head'
 import type { AppProps } from 'next/app'
 import Layout from '../components/layouts/layout'
 import ThemeProvider from '../utils/theme'
+import SizeObserver from '../utils/size-observer'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -16,11 +17,13 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
         <link rel='icon' href='/twitter-icon.png' />
       </Head>
-      <ThemeProvider>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </ThemeProvider>
+      <SizeObserver>
+        <ThemeProvider>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ThemeProvider>
+      </SizeObserver>
     </>
   )
 }

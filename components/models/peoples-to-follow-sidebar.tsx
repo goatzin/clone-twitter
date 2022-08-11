@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { darkTheme } from '../../libs/colors'
 import { ThemeContext } from '../../utils/theme'
+import { SizeContext } from '../../utils/size-observer'
 
 interface Props {
   image: string
@@ -13,6 +14,19 @@ interface Props {
 
 const WhoToFollow: React.FC<Props> = ({ image, username, nickname, link }) => {
   const { backgroundTheme } = useContext(ThemeContext)
+  const { innerWidth } = useContext(SizeContext)
+
+  const user = username.length > 18
+    ? innerWidth < 1110
+      ? username.slice(0, 12).padEnd(15, '.')
+      : username.slice(0, 17).padEnd(20, '.')
+    : username
+  const nick = nickname.length > 18
+    ? innerWidth < 1024
+      ? nickname.slice(0, 12).padEnd(15, '.')
+      : nickname.slice(0, 15).padEnd(18, '.')
+    : nickname
+
   return (
     <Link href={link}>
       <a className={`flex items-center justify-between min-w-full py-3 px-5 ${backgroundTheme === 'light' ? 'bg-slate-50 hover:brightness-95' : 'hover:brightness-110'} duration-200`} style={{
@@ -34,10 +48,10 @@ const WhoToFollow: React.FC<Props> = ({ image, username, nickname, link }) => {
           </div>
           <div className='flex flex-col'>
             <span className='text-sm font-bold hover:underline'>
-              {nickname}
+              {nick}
             </span>
             <span className='text-sm text-slate-400'>
-              {username}
+              {user}
             </span>
           </div>
         </div>

@@ -11,11 +11,13 @@ interface Props {
 
 const SideBarColumn: React.FC<Props> = ({ searchBar, hCard, fCard }) => {
   return (
-    <div className='xl:min-w-[400px] xl:max-w-[400px] lg:min-w-[340px] lg:max-w-[340px] lg:flex hidden flex-col items-center py-2 px-5'>
+    <div className='xl:min-w-[400px] xl:max-w-[400px] lg:min-w-[340px] lg:max-w-[340px] lg:flex hidden flex-col items-center px-5'>
       {searchBar && <SearchBar />}
-      {hCard && <HCard />}
-      {fCard && <FCard />}
-      <SidebarFooter />
+      <div style={{ marginTop: searchBar ? '3.5rem' : '1rem' }}>
+        {hCard && <HCard />}
+        {fCard && <FCard />}
+        <SidebarFooter />
+      </div>
     </div>
   )
 }
