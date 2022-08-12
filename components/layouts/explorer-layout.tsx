@@ -52,7 +52,7 @@ const ExplorerLayout: React.FC<Props> = ({ children }) => {
             <IoSettingsOutline className='w-6 h-6' />
           </button>
         </div>
-        <ul className='flex my-1 mx-1 justify-between w-full'>
+        <ul className='flex mx-1 justify-between w-full'>
           <li>
             <Link href='/explorer/tabs/for-you'>
               <a className={`px-5 pt-3 flex items-center justify-center tracking-wide ${backgroundTheme === 'light' ? 'hover:brightness-90' : 'hover:brightness-110'} duration-200`} style={{

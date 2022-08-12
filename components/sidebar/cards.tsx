@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
 import Link from 'next/link'
-import { darkTheme, lightTheme } from '../libs/colors'
-import { ThemeContext } from '../utils/theme'
-import { HashTrending, NoticesTrending, Trending } from './models/trending-sidebar'
-import WhoToFollow from './models/peoples-to-follow-sidebar'
+import { darkTheme, lightTheme } from '../../libs/colors'
+import { ThemeContext } from '../../utils/theme'
+import { HashTrending, NoticesTrending, Trending } from './trending-sidebar'
+import WhoToFollow from './peoples-to-follow-sidebar'
 
 // What'happening card
 export const HCard: React.FC = () => {

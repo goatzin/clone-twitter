@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
 import { lightTheme, darkTheme } from '../libs/colors'
 import { ThemeContext } from '../utils/theme'
-import { FCard, HCard } from './cards'
+import { FCard, HCard } from './sidebar/cards'
 import SearchBar from './search-bar'
-import SidebarFooter from './sidebar-footer'
+import SidebarFooter from './sidebar/sidebar-footer'
 
 interface Props {
   searchBar: boolean
