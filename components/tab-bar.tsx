@@ -17,14 +17,15 @@ import { colors, darkTheme, lightTheme } from '../libs/colors'
 
 const TabBar: React.FC = () => {
   const { backgroundTheme, colorTheme, handleBackground } = useContext(ThemeContext)
-  const [currentPage, setCurrentPage] = useState('')
+  const [currentPage, setCurrentPage] = useState([''])
   const router = useRouter()
   const handlePage = useCallback(() => {
-    setCurrentPage(window.location.pathname)
+    const path = window.location.pathname.split('/')
+    setCurrentPage(path)
   }, [])
 
   useEffect(() => {
-    if (currentPage !== router.asPath) {
+    if (currentPage.join('/') !== router.asPath) {
       handlePage()
     }
   }, [router])
@@ -56,7 +57,7 @@ const TabBar: React.FC = () => {
                   ? darkTheme.background
                   : '#000'
             }}>
-              {currentPage === '/home'
+              {currentPage[1] === 'home'
                 ? <RiHome7Fill className='w-icon h-icon' />
                 : <RiHome7Line className='w-icon h-icon' />
               }
@@ -70,7 +71,7 @@ const TabBar: React.FC = () => {
                   ? darkTheme.background
                   : '#000'
             }}>
-              {currentPage === '/explorer'
+              {currentPage[1] === 'explorer'
                 ? <RiSearch2Fill className='w-icon h-icon' />
                 : <RiSearch2Line className='w-icon h-icon' />
               }
@@ -84,7 +85,7 @@ const TabBar: React.FC = () => {
                   ? darkTheme.background
                   : '#000'
             }}>
-              {currentPage === '/notifications'
+              {currentPage[1] === 'notifications'
                 ? <RiNotification2Fill className='w-icon h-icon' />
                 : <RiNotification2Line className='w-icon h-icon' />
               }
@@ -98,7 +99,7 @@ const TabBar: React.FC = () => {
                   ? darkTheme.background
                   : '#000'
             }}>
-              {currentPage === '/messages'
+              {currentPage[1] === 'messages'
                 ? <RiMailFill className='w-icon h-icon' />
                 : <RiMailLine className='w-icon h-icon' />
               }
@@ -112,7 +113,7 @@ const TabBar: React.FC = () => {
                   ? darkTheme.background
                   : '#000'
             }}>
-              {currentPage === '/i/bookmarks'
+              {currentPage[2] === 'bookmarks'
                 ? <RiBookmarkFill className='w-icon h-icon' />
                 : <RiBookmarkLine className='w-icon h-icon' />
               }
@@ -126,7 +127,7 @@ const TabBar: React.FC = () => {
                   ? darkTheme.background
                   : '#000'
             }}>
-              {currentPage === '/username/lists'
+              {currentPage[2] === 'lists'
                 ? <RiFileList2Fill className='w-icon h-icon' />
                 : <RiFileList2Line className='w-icon h-icon' />
               }
@@ -140,7 +141,7 @@ const TabBar: React.FC = () => {
                   ? darkTheme.background
                   : '#000'
             }}>
-              {currentPage === '/username'
+              {currentPage[1] === 'username' && currentPage[2] !== 'lists'
                 ? <RiUser3Fill className='w-icon h-icon' />
                 : <RiUser3Line className='w-icon h-icon' />
               }

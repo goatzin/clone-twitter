@@ -77,7 +77,7 @@ export const HCard: React.FC = () => {
 export const FCard: React.FC = () => {
   const { backgroundTheme, colorTheme } = useContext(ThemeContext)
   return (
-    <div className={`w-full min-h-min rounded-xl flex flex-col ${backgroundTheme === 'light' ? 'bg-slate-50' : 'brightness-125'} m-3`} style={{
+    <div className={`w-full min-h-min rounded-xl flex flex-col ${backgroundTheme === 'light' ? 'bg-slate-50' : 'brightness-125'} my-3`} style={{
       color: backgroundTheme === 'light'
         ? lightTheme.text
         : darkTheme.text,
