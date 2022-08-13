@@ -6,7 +6,7 @@ import { ThemeContext } from '../utils/theme'
 const SearchBar: React.FC = () => {
   const { backgroundTheme } = useContext(ThemeContext)
   return (
-    <div className={`min-w-full flex items-center rounded-full ${backgroundTheme !== 'light' ? 'brightness-150' : ''}`} style={{
+    <div className={`min-w-full px-2 flex items-center rounded-full ${backgroundTheme !== 'light' ? 'brightness-150' : ''}`} style={{
       color: backgroundTheme === 'light'
         ? lightTheme.text
         : darkTheme.text,
@@ -22,7 +22,7 @@ const SearchBar: React.FC = () => {
       <input
         type='search'
         placeholder='Search Twitter'
-        className={`border-none outline-none ${backgroundTheme === 'light' ? 'bg-slate-100 placeholder:text-black' : 'placeholder:text-gray-600'}`}
+        className={`border-none outline-none w-full ${backgroundTheme === 'light' ? 'bg-slate-100 placeholder:text-black' : 'placeholder:text-gray-600'}`}
         style={{
           background: backgroundTheme === 'dark'
             ? darkTheme.background

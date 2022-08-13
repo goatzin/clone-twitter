@@ -15,7 +15,7 @@ const WhoToFollowCard: React.FC<Props> = ({ image, username, nickname, descripti
   const { backgroundTheme } = useContext(ThemeContext)
   return (
     <Link href={link}>
-      <a className={`flex items-center justify-between min-w-full py-3 px-5 ${backgroundTheme === 'light' ? 'hover:bg-slate-300' : 'hover:bg-slate-800'} duration-200`}>
+      <a className={`flex items-center justify-between min-w-full py-3 px-5 ${backgroundTheme === 'light' ? 'hover:bg-gray-300' : 'hover:bg-slate-800'} duration-200`}>
         <div className='flex mr-1'>
           <div className='max-w-[48px] min-w-[48px] max-h-[48px] min-h-[48px] mr-3'>
             <Image

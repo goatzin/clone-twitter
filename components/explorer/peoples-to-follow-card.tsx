@@ -1,13 +1,14 @@
 import React, { useContext } from 'react'
+import Link from 'next/link'
 import { ThemeContext } from '../../utils/theme'
 import WhoToFollowCard from './who-to-follow-card'
 
 const PeoplesToFollowCard: React.FC = () => {
-  const { backgroundTheme } = useContext(ThemeContext)
+  const { backgroundTheme, colorTheme } = useContext(ThemeContext)
   return (
-    <div className={`w-timeline pt-2 mt-1 border-t ${backgroundTheme === 'light' ? 'border-gray-400' : 'border-gray-400'}`}>
-      <div className='py-2 px-3 flex flex-col w-full'>
-        <h2 className='font-bold text-xl'>
+    <div className={`w-timeline pt-2 mt-1 border-t ${backgroundTheme === 'light' ? 'border-gray-300' : 'border-gray-600'}`}>
+      <div className='py-2 flex flex-col w-full'>
+        <h2 className='px-3 font-bold text-xl'>
           Who to follow
         </h2>
         <div className='flex flex-col mt-5'>
@@ -32,7 +33,17 @@ const PeoplesToFollowCard: React.FC = () => {
             description=''
             link=''
           />
+          <Link href=''>
+            <a className={`text-sm py-3 px-4 w-full ${backgroundTheme === 'light' ? 'hover:bg-gray-300' : 'hover:bg-slate-800'} duration-200`}
+              style={{
+                color: colorTheme,
+              }}
+            >
+              Show more
+            </a>
+          </Link>
         </div>
+        {/* make some comments before */}
       </div>
     </div>
   )

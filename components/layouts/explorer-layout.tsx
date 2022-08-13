@@ -31,7 +31,7 @@ const ExplorerLayout: React.FC<Props> = ({ children }) => {
         ? lightTheme.text
         : darkTheme.text
     }}>
-      <div className='fixed top-0 z-10 w-[598px] min-w-min flex flex-col items-center py-3 px-5 backdrop-blur-sm' style={{
+      <div className={`fixed top-0 z-10 w-[598px] min-w-min flex flex-col border-b items-center py-3 px-5 backdrop-blur-sm ${backgroundTheme === 'light' ? 'border-gray-300' : 'border-gray-600'}`} style={{
         background: backgroundTheme === 'light'
           ? 'rgba(255, 255, 255, 0.85)'
           : backgroundTheme === 'dark'
