@@ -8,7 +8,7 @@ import { ThemeContext } from '../utils/theme'
 import { lightTheme, darkTheme } from '../libs/colors'
 import AutoTextArea from './auto-textarea'
 
-const PostBox = () => {
+const PostBox: React.FC = () => {
   const { backgroundTheme, colorTheme } = useContext(ThemeContext)
   // configure later
   const [status, setStatus] = useState({

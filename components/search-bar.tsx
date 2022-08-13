@@ -3,7 +3,7 @@ import { RiSearch2Line } from 'react-icons/ri'
 import { darkTheme, lightTheme } from '../libs/colors'
 import { ThemeContext } from '../utils/theme'
 
-const SearchBar = () => {
+const SearchBar: React.FC = () => {
   const { backgroundTheme } = useContext(ThemeContext)
   return (
     <div className={`min-w-full flex items-center rounded-full ${backgroundTheme !== 'light' ? 'brightness-150' : ''}`} style={{

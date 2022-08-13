@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import { RiMoreLine } from 'react-icons/ri'
 
-const SidebarFooter = () => (
+const SidebarFooter: React.FC = () => (
   <div className='min-w-full grid grid-cols-2 xl:grid-cols-3 text-slate-400 text-xs leading-5'>
     <Link href=''>
       <a className='hover:underline'>Terms of Service</a>
