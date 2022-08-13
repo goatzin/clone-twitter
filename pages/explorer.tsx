@@ -11,7 +11,7 @@ const Explorer: NextPage = () => {
     <SidebarLayout searchBar={false} hCard={false} fCard={true}>
       <ExplorerLayout>
         <TopTrendingNews
-          topic={'Politics'}
+          topic='Politics'
           time='Live'
           context='Our beloved new president made his address at a party'
           image='/trending/monkey-trending.jpg'

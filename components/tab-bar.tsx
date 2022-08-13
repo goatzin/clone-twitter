@@ -31,7 +31,7 @@ const TabBar: React.FC = () => {
   }, [router])
 
   return (
-    <div className='mx-12'>
+    <div className='mx-16'>
       <ul className='flex flex-col items-center justify-between min-h-screen w-17 fixed' style={{
         color: backgroundTheme === 'light' ? lightTheme.icon : darkTheme.icon,
       }}>

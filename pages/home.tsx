@@ -10,7 +10,7 @@ const Home: NextPage = () => {
   const { backgroundTheme } = useContext(ThemeContext)
   return (
     <SidebarLayout searchBar={true} hCard={true} fCard={true}>
-      <div className={`w-timeline min-h-screen border-l border-r ${backgroundTheme === 'light' ? 'border-gray-300' : 'border-gray-600'} items-center mx-4 pt-8`} style={{
+      <div className={`w-timeline min-h-screen border-l border-r ${backgroundTheme === 'light' ? 'border-gray-300' : 'border-gray-600'} items-center pt-8`} style={{
         color: backgroundTheme === 'light' ? lightTheme.text : darkTheme.text
       }}>
         <div className='w-[598px] backdrop-blur-sm min-w-min flex justify-between items-center py-2 px-5 z-10 fixed top-0' style={{
