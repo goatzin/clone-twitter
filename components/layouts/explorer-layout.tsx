@@ -26,12 +26,12 @@ const ExplorerLayout: React.FC<Props> = ({ children }) => {
   }, [router])
 
   return (
-    <div className={`w-timeline min-h-screen border-l border-r items-center pt-8 ${backgroundTheme === 'light' ? 'border-gray-300' : 'border-gray-600'}`} style={{
+    <div className={`w-timeline min-h-screen border-l border-r items-center pt-8 ${backgroundTheme === 'light' ? 'border-gray-100' : 'border-gray-700'}`} style={{
       color: backgroundTheme === 'light'
         ? lightTheme.text
         : darkTheme.text
     }}>
-      <div className={`fixed top-0 z-10 w-[598px] flex flex-col border-b items-center py-3 backdrop-blur-sm ${backgroundTheme === 'light' ? 'border-gray-300' : 'border-gray-600'}`} style={{
+      <div className={`fixed top-0 z-10 w-[598px] flex flex-col border-b items-center py-3 backdrop-blur-sm ${backgroundTheme === 'light' ? 'border-gray-100' : 'border-gray-700'}`} style={{
         background: backgroundTheme === 'light'
           ? 'rgba(255, 255, 255, 0.85)'
           : backgroundTheme === 'dark'
@@ -42,7 +42,7 @@ const ExplorerLayout: React.FC<Props> = ({ children }) => {
           <div className='min-w-[502px]'>
             <SearchBar />
           </div>
-          <button className='p-1 flex items-center justify-center rounded-full hover:brightness-75 active:brightness-50 duration-200' style={{
+          <button className={`p-1 flex items-center justify-center rounded-full ${backgroundTheme === 'light' ? 'hover:brightness-95 active:brightness-90' : 'hover:brightness-110 active:brightness-125'} duration-200`} style={{
             background: backgroundTheme === 'light'
               ? lightTheme.background
               : backgroundTheme === 'dark'
@@ -55,7 +55,7 @@ const ExplorerLayout: React.FC<Props> = ({ children }) => {
         <ul className='flex justify-between w-full'>
           <li className='w-full'>
             <Link href='/explorer/tabs/for-you'>
-              <a className={`w-full pt-3 flex items-center justify-center tracking-wide ${backgroundTheme === 'light' ? 'hover:bg-neutral-300' : 'hover:bg-slate-800'} duration-200`} style={{
+              <a className={`w-full pt-3 flex items-center justify-center ${backgroundTheme === 'light' ? 'hover:bg-neutral-100' : 'hover:bg-gray-800'} duration-200`} style={{
                 fontWeight: currentPage === 'for-you' || currentPage === 'explorer'
                   ? 'bold'
                   : 'normal',
@@ -75,7 +75,7 @@ const ExplorerLayout: React.FC<Props> = ({ children }) => {
           </li>
           <li className='w-full'>
             <Link href='/explorer/tabs/trending'>
-              <a className={`w-full pt-3 flex items-center justify-center tracking-wide ${backgroundTheme === 'light' ? 'hover:bg-neutral-300' : 'hover:bg-slate-800'} duration-200`} style={{
+              <a className={`w-full pt-3 flex items-center justify-center ${backgroundTheme === 'light' ? 'hover:bg-neutral-100' : 'hover:bg-gray-800'} duration-200`} style={{
                 fontWeight: currentPage === 'trending'
                   ? 'bold'
                   : 'normal',
@@ -95,7 +95,7 @@ const ExplorerLayout: React.FC<Props> = ({ children }) => {
           </li>
           <li className='w-full'>
             <Link href='/explorer/tabs/news'>
-              <a className={`w-full pt-3 flex items-center justify-center tracking-wide ${backgroundTheme === 'light' ? 'hover:bg-neutral-300' : 'hover:bg-slate-800'} duration-200`} style={{
+              <a className={`w-full pt-3 flex items-center justify-center ${backgroundTheme === 'light' ? 'hover:bg-neutral-100' : 'hover:bg-gray-800'} duration-200`} style={{
                 fontWeight: currentPage === 'news'
                   ? 'bold'
                   : 'normal'
@@ -115,7 +115,7 @@ const ExplorerLayout: React.FC<Props> = ({ children }) => {
           </li>
           <li className='w-full'>
             <Link href='/explorer/tabs/sports'>
-              <a className={`w-full pt-3 flex items-center justify-center tracking-wide ${backgroundTheme === 'light' ? 'hover:bg-neutral-300' : 'hover:bg-slate-800'} duration-200`} style={{
+              <a className={`w-full pt-3 flex items-center justify-center ${backgroundTheme === 'light' ? 'hover:bg-neutral-100' : 'hover:bg-gray-800'} duration-200`} style={{
                 fontWeight: currentPage === 'sports'
                   ? 'bold'
                   : 'normal'
@@ -135,7 +135,7 @@ const ExplorerLayout: React.FC<Props> = ({ children }) => {
           </li>
           <li className='w-full'>
             <Link href='/explorer/tabs/entertainment'>
-              <a className={`w-full pt-3 flex items-center justify-center tracking-wide ${backgroundTheme === 'light' ? 'hover:bg-neutral-300' : 'hover:bg-slate-800'} duration-200`} style={{
+              <a className={`w-full pt-3 flex items-center justify-center ${backgroundTheme === 'light' ? 'hover:bg-neutral-100' : 'hover:bg-gray-800'} duration-200`} style={{
                 fontWeight: currentPage === 'entertainment'
                   ? 'bold'
                   : 'normal'

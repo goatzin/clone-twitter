@@ -15,7 +15,7 @@ const WhoToFollowCard: React.FC<Props> = ({ image, username, nickname, descripti
   const { backgroundTheme } = useContext(ThemeContext)
   return (
     <Link href={link}>
-      <a className={`flex items-center justify-between min-w-full py-3 px-5 ${backgroundTheme === 'light' ? 'hover:bg-gray-300' : 'hover:bg-slate-800'} duration-200`}>
+      <a className={`flex items-center justify-between min-w-full py-3 px-5 ${backgroundTheme === 'light' ? 'hover:bg-gray-100' : 'hover:bg-gray-800'} duration-200`}>
         <div className='flex mr-1'>
           <div className='max-w-[48px] min-w-[48px] max-h-[48px] min-h-[48px] mr-3'>
             <Image
@@ -30,7 +30,7 @@ const WhoToFollowCard: React.FC<Props> = ({ image, username, nickname, descripti
             <span className='text-sm font-bold hover:underline'>
               {nickname}
             </span>
-            <span className='text-sm text-slate-400'>
+            <span className='text-sm text-slate-600'>
               {username}
             </span>
             <span className='text-sm'>
@@ -38,7 +38,7 @@ const WhoToFollowCard: React.FC<Props> = ({ image, username, nickname, descripti
             </span>
           </div>
         </div>
-        <button className={`rounded-3xl py-1 px-4 flex items-center justify-center font-bold tracking-tighter ${backgroundTheme === 'light' ? 'bg-black hover:bg-slate-800' : 'bg-white hover:brightness-50'} duration-200`} style={{
+        <button className={`rounded-3xl py-1 px-4 flex items-center justify-center font-bold ${backgroundTheme === 'light' ? 'bg-black hover:bg-gray-800' : 'bg-white hover:brightness-90'} duration-200`} style={{
           color: backgroundTheme === 'light'
             ? '#fff'
             : '#000'

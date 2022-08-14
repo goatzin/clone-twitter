@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  font-family: SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, sans-serif;
+  font-family: Titillium Web, Open Sans, sans-serif;
 }
 
 input[type="search"]::-webkit-search-decoration,

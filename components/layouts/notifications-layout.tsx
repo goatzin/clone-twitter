@@ -25,12 +25,12 @@ const NotificationsLayout: React.FC<Props> = ({ children }) => {
   }, [router.asPath])
 
   return (
-    <div className={`w-timeline min-h-screen border-l border-r items-center pt-8 ${backgroundTheme === 'light' ? 'border-gray-300' : 'border-gray-600'}`} style={{
+    <div className={`w-timeline min-h-screen border-l border-r items-center pt-8 ${backgroundTheme === 'light' ? 'border-gray-100' : 'border-gray-700'}`} style={{
       color: backgroundTheme === 'light'
         ? lightTheme.text
         : darkTheme.text
     }}>
-      <div className={`fixed top-0 z-10 w-[598px]  flex flex-col border-b items-center py-3 backdrop-blur-sm ${backgroundTheme === 'light' ? 'border-gray-300' : 'border-gray-600'}`} style={{
+      <div className={`fixed top-0 z-10 w-[598px]  flex flex-col border-b items-center py-3 backdrop-blur-sm ${backgroundTheme === 'light' ? 'border-gray-100' : 'border-gray-700'}`} style={{
         background: backgroundTheme === 'light'
           ? 'rgba(255, 255, 255, .85)'
           : backgroundTheme === 'dark'
@@ -41,7 +41,7 @@ const NotificationsLayout: React.FC<Props> = ({ children }) => {
           <h1 className='font-bold text-xl'>
             Notifications
           </h1>
-          <button className='p1 flex items-center justify-center rounded-full hover:brightness-75 active:brightness-50 duration-200' style={{
+          <button className={`p1 flex items-center justify-center rounded-full ${backgroundTheme === 'light' ? 'hover:brightness-95 active:brightness-90' : 'hover:brightness-110 active:brightness-125'} duration-200`} style={{
             background: backgroundTheme === 'light'
               ? lightTheme.background
               : backgroundTheme === 'dark'
@@ -54,7 +54,7 @@ const NotificationsLayout: React.FC<Props> = ({ children }) => {
         <ul className='w-full flex justify-between'>
           <li className='w-full'>
             <Link href='/notifications'>
-              <a className={`w-full pt-3 flex items-center justify-center tracking-wide ${backgroundTheme === 'light' ? 'hover:bg-neutral-300' : 'hover:bg-slate-800'} duration-200`} style={{
+              <a className={`w-full pt-3 flex items-center justify-center ${backgroundTheme === 'light' ? 'hover:bg-neutral-100' : 'hover:bg-gray-800'} duration-200`} style={{
                 fontWeight: currentPage === 'notifications'
                   ? 'bold'
                   : 'normal'
@@ -74,7 +74,7 @@ const NotificationsLayout: React.FC<Props> = ({ children }) => {
           </li>
           <li className='w-full'>
             <Link href='/notifications/mentions'>
-              <a className={`w-full pt-3 flex items-center justify-center tracking-wide ${backgroundTheme === 'light' ? 'hover:bg-neutral-300' : 'hover:bg-slate-800'} duration-200`} style={{
+              <a className={`w-full pt-3 flex items-center justify-center ${backgroundTheme === 'light' ? 'hover:bg-neutral-100' : 'hover:bg-gray-800'} duration-200`} style={{
                 fontWeight: currentPage === 'mentions'
                   ? 'bold'
                   : 'normal'

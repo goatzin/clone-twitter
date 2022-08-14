@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ThemeContext } from '../../utils/theme'
-import { darkTheme } from '../../libs/colors'
+import { darkTheme, lightTheme } from '../../libs/colors'
 
 interface TrendingProps {
   topic: string
@@ -15,15 +15,15 @@ export const Trending: React.FC<TrendingProps> = ({ topic, title, image, link })
   const { backgroundTheme } = useContext(ThemeContext)
   return (
     <Link href={link}>
-      <a className={`flex min-w-full justify-between py-3 px-4 ${backgroundTheme === 'light' ? 'bg-slate-50 hover:brightness-95' : 'hover:brightness-110'} duration-300`} style={{
-        background: backgroundTheme === 'dark'
-          ? darkTheme.background
-          : backgroundTheme === 'black'
-            ? '#000'
-            : ''
+      <a className={`flex min-w-full justify-between py-3 px-4 ${backgroundTheme === 'light' ? 'hover:brightness-95' : 'hover:brightness-110'} duration-300`} style={{
+        background: backgroundTheme === 'light'
+          ? lightTheme.background
+          : backgroundTheme === 'dark'
+            ? darkTheme.background
+            : '#000'
       }}>
         <div className='flex flex-col'>
-          <span className='text-sm text-slate-400'>
+          <span className='text-sm text-slate-600'>
             {topic} · Trending
           </span>
           <h2 className='text-base' style={{
@@ -58,12 +58,12 @@ export const HashTrending: React.FC<HashProps> = ({ title, content, link }) => {
   const { backgroundTheme } = useContext(ThemeContext)
   return (
     <Link href={link}>
-      <a className={`flex flex-col min-w-full justify-between py-3 px-4 ${backgroundTheme === 'light' ? 'bg-slate-50 hover:brightness-95' : 'hover:brightness-110'} duration-300`} style={{
-        background: backgroundTheme === 'dark'
-          ? darkTheme.background
-          : backgroundTheme === 'black'
-            ? '#000'
-            : ''
+      <a className={`flex flex-col min-w-full justify-between py-3 px-4 ${backgroundTheme === 'light' ? 'hover:brightness-95' : 'hover:brightness-110'} duration-300`} style={{
+        background: backgroundTheme === 'light'
+          ? lightTheme.background
+          : backgroundTheme === 'dark'
+            ? darkTheme.background
+            : '#000'
       }}>
         <h2 className='text-xl' style={{
           color: backgroundTheme === 'light'
@@ -72,7 +72,7 @@ export const HashTrending: React.FC<HashProps> = ({ title, content, link }) => {
         }}>
           {title}
         </h2>
-        <span className='text-base text-slate-400'>
+        <span className='text-base text-slate-600'>
           {content}
         </span>
       </a>
@@ -92,15 +92,15 @@ export const NoticesTrending: React.FC<NoticesProps> = ({ topic, title, time, im
   const { backgroundTheme } = useContext(ThemeContext)
   return (
     <Link href={link}>
-      <a className={`flex min-w-full justify-between py-3 px-4 items-center ${backgroundTheme === 'light' ? 'bg-slate-50 hover:brightness-95' : 'hover:brightness-110'} duration-300`} style={{
-        background: backgroundTheme === 'dark'
-          ? darkTheme.background
-          : backgroundTheme === 'black'
-            ? '#000'
-            : ''
+      <a className={`flex min-w-full justify-between py-3 px-4 items-center ${backgroundTheme === 'light' ? 'hover:brightness-95' : 'hover:brightness-110'} duration-300`} style={{
+        background: backgroundTheme === 'light'
+          ? lightTheme.background
+          : backgroundTheme === 'dark'
+            ? darkTheme.background
+            : '#000'
       }}>
         <div className='flex flex-col justify-start'>
-          <div className='text-slate-400 text-sm'>
+          <div className='text-slate-600 text-sm'>
             {topic} · {time}
           </div>
           <h2 className='tracking-wide text-base' style={{

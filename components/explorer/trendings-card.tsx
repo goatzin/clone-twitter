@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { darkTheme, lightTheme } from '../../libs/colors'
+import { ThemeContext } from '../../utils/theme'
 import { HashTrending, NoticesTrending, Trending } from '../sidebar/trending-sidebar'
 
 const TrendingsCard: React.FC = () => {
+  const { backgroundTheme } = useContext(ThemeContext)
   return (
-    <div className='min-h-min w-full flex flex-col mt-1 border-b-slate-400 bg-white'>
+    <div className='min-h-min w-full flex flex-col mt-1' style={{
+      background: backgroundTheme === 'light'
+        ? lightTheme.background
+        : backgroundTheme === 'dark'
+          ? darkTheme.background
+          : '#000'
+    }}>
       <NoticesTrending
         topic='Outdoors'
         time='2 hours ago'

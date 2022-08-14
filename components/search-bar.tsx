@@ -16,13 +16,13 @@ const SearchBar: React.FC = () => {
           ? darkTheme.background
           : '#000'
     }}>
-      <div className={`p-3 ${backgroundTheme !== 'light' ? 'text-gray-600' : ''}`}>
+      <div className={`p-3 ${backgroundTheme !== 'light' ? 'text-slate-600' : ''}`}>
         <RiSearch2Line />
       </div>
       <input
         type='search'
         placeholder='Search Twitter'
-        className={`border-none outline-none w-full ${backgroundTheme === 'light' ? 'bg-slate-100 placeholder:text-black' : 'placeholder:text-gray-600'}`}
+        className={`placeholder:text-sm border-none outline-none w-full ${backgroundTheme === 'light' ? 'bg-slate-100 placeholder:text-black' : 'placeholder:text-gray-600'}`}
         style={{
           background: backgroundTheme === 'dark'
             ? darkTheme.background

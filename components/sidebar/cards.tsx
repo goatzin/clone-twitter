@@ -9,7 +9,7 @@ import WhoToFollow from './peoples-to-follow-sidebar'
 export const HCard: React.FC = () => {
   const { backgroundTheme, colorTheme } = useContext(ThemeContext)
   return (
-    <div className={`w-full min-h-min rounded-xl ${backgroundTheme === 'light' ? 'bg-slate-50' : 'brightness-125'} flex flex-col mt-3`} style={{
+    <div className={`w-full min-h-min rounded-xl ${backgroundTheme === 'light' ? 'bg-neutral-50' : 'brightness-125'} flex flex-col mt-3`} style={{
       color: backgroundTheme === 'light'
         ? lightTheme.text
         : darkTheme.text,
@@ -19,7 +19,7 @@ export const HCard: React.FC = () => {
           ? '#000'
           : ''
     }}>
-      <h1 className='text-xl tracking-widest py-3 px-4 font-bold'>
+      <h1 className='text-xl py-3 px-4 font-bold'>
         What's happening?
       </h1>
       <div>
@@ -77,7 +77,7 @@ export const HCard: React.FC = () => {
 export const FCard: React.FC = () => {
   const { backgroundTheme, colorTheme } = useContext(ThemeContext)
   return (
-    <div className={`w-full min-h-min rounded-xl flex flex-col ${backgroundTheme === 'light' ? 'bg-slate-50' : 'brightness-125'} my-3`} style={{
+    <div className={`w-full min-h-min rounded-xl flex flex-col ${backgroundTheme === 'light' ? 'bg-neutral-50' : 'brightness-125'} my-3`} style={{
       color: backgroundTheme === 'light'
         ? lightTheme.text
         : darkTheme.text,
@@ -111,7 +111,7 @@ export const FCard: React.FC = () => {
         />
       </div>
       <Link href=''>
-        <a className={`text-sm p-3 rounded-br-xl rounded-bl-xl ${backgroundTheme === 'light' ? 'bg-slate-50 hover:brightness-95' : 'hover:brightness-110'} duration-200`}
+        <a className={`text-sm p-3 rounded-br-xl rounded-bl-xl ${backgroundTheme === 'light' ? 'bg-gray-50 hover:brightness-95' : 'hover:brightness-110'} duration-200`}
           style={{
             color: colorTheme,
             background: backgroundTheme === 'dark'

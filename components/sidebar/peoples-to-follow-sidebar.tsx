@@ -29,7 +29,7 @@ const WhoToFollow: React.FC<Props> = ({ image, username, nickname, link }) => {
 
   return (
     <Link href={link}>
-      <a className={`flex items-center justify-between min-w-full py-3 px-5 ${backgroundTheme === 'light' ? 'bg-slate-50 hover:brightness-95' : 'hover:brightness-110'} duration-200`} style={{
+      <a className={`flex items-center justify-between min-w-full py-3 px-5 ${backgroundTheme === 'light' ? 'bg-neutral-50 hover:brightness-95' : 'hover:brightness-110'} duration-200`} style={{
         background: backgroundTheme === 'dark'
           ? darkTheme.background
           : backgroundTheme === 'black'
@@ -50,12 +50,12 @@ const WhoToFollow: React.FC<Props> = ({ image, username, nickname, link }) => {
             <span className='text-sm font-bold hover:underline'>
               {nick}
             </span>
-            <span className='text-sm text-slate-400'>
+            <span className='text-sm text-slate-600'>
               {user}
             </span>
           </div>
         </div>
-        <button className={`rounded-3xl py-1 px-4 flex items-center justify-center font-bold tracking-tighter ${backgroundTheme === 'light' ? 'bg-black hover:bg-slate-800' : 'bg-white hover:brightness-50'} duration-200`} style={{
+        <button className={`rounded-3xl py-1 px-4 flex items-center justify-center font-bold ${backgroundTheme === 'light' ? 'bg-black hover:bg-gray-800' : 'bg-white hover:brightness-90'} duration-200`} style={{
           color: backgroundTheme === 'light'
             ? '#fff'
             : '#000'

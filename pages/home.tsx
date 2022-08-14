@@ -10,7 +10,7 @@ const Home: NextPage = () => {
   const { backgroundTheme } = useContext(ThemeContext)
   return (
     <SidebarLayout searchBar={true} hCard={true} fCard={true}>
-      <div className={`w-timeline min-h-screen border-l border-r ${backgroundTheme === 'light' ? 'border-gray-300' : 'border-gray-600'} items-center pt-8`} style={{
+      <div className={`w-timeline min-h-screen border-l border-r ${backgroundTheme === 'light' ? 'border-gray-100' : 'border-gray-700'} items-center pt-8`} style={{
         color: backgroundTheme === 'light' ? lightTheme.text : darkTheme.text
       }}>
         <div className='w-[598px] backdrop-blur-sm min-w-min flex justify-between items-center py-2 px-5 z-10 fixed top-0' style={{
@@ -25,7 +25,7 @@ const Home: NextPage = () => {
               Home
             </h1>
           </div>
-          <button className='p-1 flex justify-center items-center rounded-full hover:brightness-75 active:brightness-50 duration-200' style={{
+          <button className={`p-1 flex justify-center items-center rounded-full ${backgroundTheme === 'light' ? 'hover:brightness-95 active:brightness-90' : 'hover:brightness-110 active:brightness-125'} duration-200`} style={{
             backgroundColor: backgroundTheme === 'light'
               ? lightTheme.background
               : backgroundTheme === 'dark'
@@ -36,7 +36,7 @@ const Home: NextPage = () => {
           </button>
         </div>
         <PostBox />
-        <div className={`min-w-full border-b ${backgroundTheme === 'light' ? 'border-gray-300' : 'border-gray-600'}`} />
+        <div className={`min-w-full border-b ${backgroundTheme === 'light' ? 'border-gray-100' : 'border-gray-700'}`} />
       </div>
     </SidebarLayout>
   )

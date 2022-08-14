@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import Link from 'next/link'
 import { ThemeContext } from '../../utils/theme'
+import { darkTheme, lightTheme } from '../../libs/colors'
 
 interface Props {
   link: string
@@ -17,8 +18,14 @@ const RankingTrendings: React.FC<Props> = ({ link, ranking, topic, content, twee
     : new Intl.NumberFormat().format(tweets)
   return (
     <Link href={link}>
-      <a className={`px-3 py-2 w-full flex flex-col justify-center items-start ${backgroundTheme === 'light' ? 'hover:bg-gray-300' : 'hover:bg-slate-800'} duration-200`}>
-        <span className='text-sm text-slate-400'>
+      <a className={`px-3 py-2 w-full flex flex-col justify-center items-start ${backgroundTheme === 'light' ? 'hover:brightness-95' : 'hover:brightness-110'} duration-200`} style={{
+        background: backgroundTheme === 'light'
+          ? lightTheme.background
+          : backgroundTheme === 'dark'
+            ? darkTheme.background
+            : '#000'
+      }}>
+        <span className='text-sm text-slate-600'>
           {ranking} ·&nbsp;
           {topic !== '' && <span>{topic} ·&nbsp;</span>}
           Trending
@@ -26,7 +33,7 @@ const RankingTrendings: React.FC<Props> = ({ link, ranking, topic, content, twee
         <span className='text-base font-bold'>
           {content}
         </span>
-        <span className='text-sm text-slate-400'>
+        <span className='text-sm text-slate-600'>
           {tweetsTotal} Tweets
         </span>
       </a>

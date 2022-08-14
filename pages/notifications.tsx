@@ -12,7 +12,7 @@ const Notifications: NextPage = () => {
             Nothing to see here —
             yet
           </span>
-          <span className='text-slate-400 text-sm'>
+          <span className='text-slate-600 text-sm'>
             From likes to Retweets and a whole lot more, this
             is where all the action happens.
           </span>
