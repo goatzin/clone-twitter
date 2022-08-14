@@ -1,6 +1,7 @@
 // make api later
 import React, { useContext } from 'react'
 import { IoSettingsOutline } from 'react-icons/io5'
+import { RiMailAddLine } from 'react-icons/ri'
 import { darkTheme, lightTheme } from '../../libs/colors'
 import { ThemeContext } from '../../utils/theme'
 
@@ -33,7 +34,7 @@ const Navigations: React.FC = () => {
                 ? darkTheme.background
                 : '#000'
           }}>
-            <IoSettingsOutline className='w-6 h-6' />
+            <RiMailAddLine className='w-6 h-6' />
           </button>
         </div>
       </div>
