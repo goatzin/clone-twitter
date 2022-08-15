@@ -13,7 +13,7 @@ const PinnedLists = () => {
       <h2 className='text-xl font-bold'>
         Pinned Lists
       </h2>
-      <div className='w-full text-sm text-slate-600 my-9 mx-4'>
+      <div className='w-full text-sm text-slate-400 my-9 mx-4'>
         Nothing to see here yet — pin your favorite Lists to access them quickly.
       </div>
     </div>

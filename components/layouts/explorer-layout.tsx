@@ -26,7 +26,7 @@ const ExplorerLayout: React.FC<Props> = ({ children }) => {
   }, [router])
 
   return (
-    <div className={`w-timeline min-h-screen border-l border-r items-center pt-8 ${backgroundTheme === 'light' ? 'border-gray-100' : 'border-gray-700'}`} style={{
+    <div className={`w-timeline min-h-full border-l border-r items-center pt-8 ${backgroundTheme === 'light' ? 'border-gray-100' : 'border-gray-700'}`} style={{
       color: backgroundTheme === 'light'
         ? lightTheme.text
         : darkTheme.text
@@ -42,17 +42,17 @@ const ExplorerLayout: React.FC<Props> = ({ children }) => {
           <div className='min-w-[502px]'>
             <SearchBar />
           </div>
-          <button className={`p-1 flex items-center justify-center rounded-full ${backgroundTheme === 'light' ? 'hover:brightness-95 active:brightness-90' : 'hover:brightness-110 active:brightness-125'} duration-200`} style={{
+          <button className={`p-2 flex items-center justify-center rounded-full ${backgroundTheme === 'light' ? 'hover:brightness-95 active:brightness-90' : 'hover:brightness-110 active:brightness-125'} duration-200`} style={{
             background: backgroundTheme === 'light'
               ? lightTheme.background
               : backgroundTheme === 'dark'
                 ? darkTheme.background
                 : '#000'
           }}>
-            <IoSettingsOutline className='w-6 h-6' />
+            <IoSettingsOutline className='w-5 h-5' />
           </button>
         </div>
-        <ul className='flex justify-between w-full'>
+        <ul className='flex justify-between w-full items-center'>
           <li className='w-full'>
             <Link href='/explorer/tabs/for-you'>
               <a className={`w-full pt-3 flex items-center justify-center ${backgroundTheme === 'light' ? 'hover:bg-neutral-100' : 'hover:bg-gray-800'} duration-200`} style={{

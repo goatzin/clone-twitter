@@ -3,18 +3,23 @@ import React, { useContext } from 'react'
 import Image from 'next/image'
 import SidebarLayout from '../../components/layouts/sidebar-layout'
 import { ThemeContext } from '../../utils/theme'
+import { darkTheme, lightTheme } from '../../libs/colors'
 
 const Bookmarks: NextPage = () => {
   const { backgroundTheme } = useContext(ThemeContext)
   const username = 'username' // fix it later
   return (
     <SidebarLayout searchBar={true} hCard={true} fCard={true}>
-      <div className={`w-timeline flex flex-col min-h-screen border-l border-r ${backgroundTheme === 'light' ? 'border-gray-100' : 'border-gray-700'}`}>
+      <div className={`w-timeline flex flex-col min-h-full border-l border-r ${backgroundTheme === 'light' ? 'border-gray-100' : 'border-gray-700'}`} style={{
+        color: backgroundTheme === 'light'
+          ? lightTheme.text
+          : darkTheme.text
+      }}>
         <div className='flex flex-col py-2 px-5'>
           <h1 className='text-xl font-bold'>
             Bookmarks
           </h1>
-          <span className='text-sm text-slate-600'>
+          <span className='text-sm text-slate-400'>
             @{username}
           </span>
         </div>
@@ -30,7 +35,7 @@ const Bookmarks: NextPage = () => {
           <h2 className='text-3xl font-bold my-1'>
             Save Tweets for late
           </h2>
-          <span className='text-base text-slate-600 w-[360px]'>
+          <span className='text-base text-slate-400 w-[360px]'>
             Don't let the good ones fly away! Bookmark
             Tweets to easily find them again in the future.
           </span>

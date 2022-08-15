@@ -5,7 +5,7 @@ import { ThemeContext } from '../../utils/theme'
 const DialogBox: React.FC = () => {
   const { backgroundTheme, colorTheme } = useContext(ThemeContext)
   return (
-    <div className={`hidden lg:flex lg:w-timeline h-screen flex-1 items-center border-r border-l ${backgroundTheme === 'light' ? 'border-gray-300' : 'border-slate-800'}`} style={{
+    <div className={`hidden lg:flex lg:w-timeline h-full flex-1 items-center border-r ${backgroundTheme === 'light' ? 'border-gray-100' : 'border-gray-700'}`} style={{
       color: backgroundTheme === 'light'
         ? lightTheme.text
         : darkTheme.text
@@ -14,7 +14,7 @@ const DialogBox: React.FC = () => {
         <h2 className='font-bold text-3xl'>
           Select a message
         </h2>
-        <span className='text-sm text-slate-300 w-[300px] text-start py-2 mb-5'>
+        <span className='text-sm text-slate-400 w-[300px] text-start py-2 mb-5'>
           Choose from your existing conversations, start a
           new one, or just keep swimming
         </span>

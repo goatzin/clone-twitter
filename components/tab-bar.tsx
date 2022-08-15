@@ -174,10 +174,8 @@ const TabBar: React.FC = () => {
                 ? darkTheme.background
                 : '#000'
           }}>
-            <button className='flex items-center justify-center border-2 w-10 h-10 rounded-full' style={{
-              borderColor: backgroundTheme === 'light' ? lightTheme.icon : darkTheme.icon
-            }}>
-              <RiUser3Line className='w-icon h-icon' />
+            <button className='flex items-center justify-center w-10 h-10 rounded-full bg-slate-300 text-slate-500'>
+              <RiUser3Fill className='w-icon h-icon' />
             </button>
           </div>
           <button className='border' onClick={handleBackground}>

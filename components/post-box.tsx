@@ -42,9 +42,9 @@ const PostBox: React.FC = () => {
 
   return (
     <div className='flex flex-row mt-4 py-2 px-5'>
-      <div className='flex justify-center text-neutral-300'>
+      <div className='flex justify-center text-slate-400'>
         <Link href='/username'>
-          <a className='w-12 h-12 border rounded-full flex justify-center items-center hover:brightness-90 duration-200' style={{
+          <a className={`w-12 h-12 border rounded-full flex justify-center items-center ${backgroundTheme === 'light' ? 'hover:brightness-95' : 'hover:brightness-110'} duration-200`} style={{
             backgroundColor: backgroundTheme === 'light'
               ? lightTheme.background
               : backgroundTheme === 'dark'
@@ -128,7 +128,7 @@ const PostBox: React.FC = () => {
                 </button>
               </li>
               <li>
-                <button className={`p-2 flex items-center justify-center rounded-full ${backgroundTheme === 'light' ? 'hover:bg-blue-100' : 'hover:brightness-75'} disabled:bg-blend-lighten duration-200`} disabled style={{
+                <button className={`p-2 flex items-center justify-center rounded-full ${backgroundTheme === 'light' ? 'active:hover:bg-blue-100' : 'active:hover:brightness-75'} disabled:bg-blend-lighten duration-200`} disabled style={{
                   backgroundColor: backgroundTheme === 'dark'
                     ? darkTheme.background
                     : backgroundTheme === 'black'
@@ -140,7 +140,7 @@ const PostBox: React.FC = () => {
                 </button>
               </li>
             </ul>
-            <button type='submit' className='flex items-center justify-center text-white rounded-full text-base font-bold px-5 py-1.5 disabled:bg-slate-100 hover:brightness-90 active:brightness-75 duration-200' disabled={buttonDisabled} style={{
+            <button type='submit' className='flex items-center justify-center text-white rounded-full text-base font-bold px-5 py-1.5 disabled:bg-slate-100 active:hover:brightness-90 active:brightness-75 duration-200' disabled={buttonDisabled} style={{
               background: colorTheme,
               opacity: buttonDisabled ? .5 : 1
             }}>

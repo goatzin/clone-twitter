@@ -12,7 +12,7 @@ const Mentions: NextPage = () => {
             Nothing to see here —
             yet
           </span>
-          <span className='text-slate-600 text-sm'>
+          <span className='text-slate-400 text-sm'>
             When someone mentions you, you'll find it here.
           </span>
         </div>

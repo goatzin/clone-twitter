@@ -17,7 +17,7 @@ const ListCard: React.FC<Props> = ({ link, image, name, creatorImage, nickname, 
   const { backgroundTheme } = useContext(ThemeContext)
   return (
     <Link href={link}>
-      <a className={`w-full py-2 px-5 flex flex-1 items-center justify-between ${backgroundTheme === 'light' ? 'hover:brightness-95' : 'hover:brightness-110'} duration-200`} style={{
+      <a className={`w-full py-3 px-5 flex flex-1 items-center justify-between ${backgroundTheme === 'light' ? 'hover:brightness-95' : 'hover:brightness-110'} duration-200`} style={{
         background: backgroundTheme === 'light'
           ? lightTheme.background
           : backgroundTheme === 'dark'
@@ -47,7 +47,7 @@ const ListCard: React.FC<Props> = ({ link, image, name, creatorImage, nickname, 
               <span className='font-bold'>
                 {nickname}&nbsp;
               </span>
-              <span className='text-slate-600'>
+              <span className='text-slate-400'>
                 @{username}
               </span>
             </div>

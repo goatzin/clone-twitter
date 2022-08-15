@@ -8,7 +8,7 @@ import { ThemeContext } from '../../utils/theme'
 const Navigations: React.FC = () => {
   const { backgroundTheme, colorTheme } = useContext(ThemeContext)
   return (
-    <div className={`w-timeline lg:flex lg:flex-col lg:min-w-[318px] lg:max-w-[318px] xl:min-w-[388px] xl:max-w-[388px] h-screen border-l border-r ${backgroundTheme === 'light' ? 'border-gray-300' : 'border-slate-800'}`} style={{
+    <div className={`w-timeline lg:flex lg:flex-col lg:min-w-[318px] lg:max-w-[318px] xl:min-w-[388px] xl:max-w-[388px] min-h-full border-l border-r ${backgroundTheme === 'light' ? 'border-gray-100' : 'border-gray-700'}`} style={{
       color: backgroundTheme === 'light'
         ? lightTheme.text
         : darkTheme.text
@@ -18,23 +18,23 @@ const Navigations: React.FC = () => {
           Messages
         </h1>
         <div className='flex'>
-          <button className='flex items-center justify-center p-2 rounded-full hover:brightness-75 active:brightness-50 duration-200' style={{
+          <button className={`flex items-center justify-center p-2 rounded-full ${backgroundTheme === 'light' ? 'hover:brightness-95 active:brightness-90' : 'hover:brightness-110 actvie:brightness-125'} duration-200`} style={{
             background: backgroundTheme === 'light'
               ? lightTheme.background
               : backgroundTheme === 'dark'
                 ? darkTheme.background
                 : '#000'
           }}>
-            <IoSettingsOutline className='w-6 h-6' />
+            <IoSettingsOutline className='w-5 h-5' />
           </button>
-          <button className='flex items-center justify-center p-2 rounded-full hover:brightness-75 active:brightness-50 duration-200' style={{
+          <button className={`flex items-center justify-center p-2 rounded-full ${backgroundTheme === 'light' ? 'hover:brightness-95 active:brightness-90' : 'hover:brightness-110 active-brightness-125'} duration-200`} style={{
             background: backgroundTheme === 'light'
               ? lightTheme.background
               : backgroundTheme === 'dark'
                 ? darkTheme.background
                 : '#000'
           }}>
-            <RiMailAddLine className='w-6 h-6' />
+            <RiMailAddLine className='w-5 h-5' />
           </button>
         </div>
       </div>
@@ -43,7 +43,7 @@ const Navigations: React.FC = () => {
           Welcome to your
           inbox!
         </h2>
-        <span className='text-sm text-slate-300 w-[360px] lg:w-fit'>
+        <span className='text-sm text-slate-400 w-[360px] lg:w-fit'>
           Drop a line, share Tweets and more with private
           conversations between you and others on
           Twitter.

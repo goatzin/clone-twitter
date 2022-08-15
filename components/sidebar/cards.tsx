@@ -29,23 +29,27 @@ export const HCard: React.FC = () => {
           title='A woodpecker was seen pecking'
           image='/trending/woodpecker-trending.jpg'
           link=''
+          className={`${backgroundTheme === 'light' ? 'bg-neutral-50' : ''}`}
         />
         <HashTrending
           title="#IDon'tKnow"
           content="I really don't know what to put here O_o"
           link=''
+          className={`${backgroundTheme === 'light' ? 'bg-neutral-50' : ''}`}
         />
         <Trending
           topic='News'
           title='Ducks have evolved a lot, being considered dangerous to several countries'
           image='/trending/duck-trending.jpg'
           link=''
+          className={`${backgroundTheme === 'light' ? 'bg-neutral-50' : ''}`}
         />
         <Trending
           topic='Technology'
           title='Dogs are crashing the economy by running online shopping bots'
           image='/trending/dog-trending.jpg'
           link=''
+          className={`${backgroundTheme === 'light' ? 'bg-neutral-50' : ''}`}
         />
         <NoticesTrending
           topic='Politics'
@@ -53,10 +57,11 @@ export const HCard: React.FC = () => {
           title='Our beloved new president made his address at a party'
           image='/trending/monkey-trending.jpg'
           link=''
+          className={`${backgroundTheme === 'light' ? 'bg-neutral-50' : ''}`}
         />
       </div>
       <Link href=''>
-        <a className={`text-sm py-3 px-4 rounded-br-xl rounded-bl-xl ${backgroundTheme === 'light' ? 'bg-slate-50 hover:brightness-95' : 'hover:brightness-110'} duration-200`}
+        <a className={`text-sm py-3 px-4 rounded-br-xl rounded-bl-xl ${backgroundTheme === 'light' ? 'bg-neutral-50 hover:brightness-95' : 'hover:brightness-110'} duration-200`}
           style={{
             color: colorTheme,
             background: backgroundTheme === 'dark'

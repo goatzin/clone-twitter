@@ -19,23 +19,27 @@ const TrendingsCard: React.FC = () => {
         title='A woodpecker was seen pecking'
         image='/trending/woodpecker-trending.jpg'
         link=''
+        className={`${backgroundTheme === 'light' ? `bg-[${lightTheme.background}]` : backgroundTheme === 'dark' ? `bg-[${darkTheme.background}]` : 'bg-black'}`}
       />
       <HashTrending
         title="#IDon'tKnow"
         content="I really don't know what to put here O_o"
         link=''
+        className={`${backgroundTheme === 'light' ? `bg-[${lightTheme.background}]` : backgroundTheme === 'dark' ? `bg-[${darkTheme.background}]` : 'bg-black'}`}
       />
       <Trending
         topic='News'
         title='Ducks have envolved a lot, being considered dangerous to several countries'
         image='/trending/duck-trending.jpg'
         link=''
+        className={`${backgroundTheme === 'light' ? `bg-[${lightTheme.background}]` : backgroundTheme === 'dark' ? `bg-[${darkTheme.background}]` : 'bg-black'}`}
       />
       <Trending
         topic='Technology'
         title='Dogs are crashing the economy by running online shopping bots'
         image='/trending/dog-trending.jpg'
         link=''
+        className={`${backgroundTheme === 'light' ? `bg-[${lightTheme.background}]` : backgroundTheme === 'dark' ? `bg-[${darkTheme.background}]` : 'bg-black'}`}
       />
     </div>
   )

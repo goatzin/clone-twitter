@@ -50,7 +50,7 @@ const WhoToFollow: React.FC<Props> = ({ image, username, nickname, link }) => {
             <span className='text-sm font-bold hover:underline'>
               {nick}
             </span>
-            <span className='text-sm text-slate-600'>
+            <span className='text-sm text-slate-400'>
               {user}
             </span>
           </div>

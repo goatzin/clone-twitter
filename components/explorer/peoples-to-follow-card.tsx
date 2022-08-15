@@ -7,7 +7,7 @@ import { darkTheme, lightTheme } from '../../libs/colors'
 const PeoplesToFollowCard: React.FC = () => {
   const { backgroundTheme, colorTheme } = useContext(ThemeContext)
   return (
-    <div className={`w-timeline pt-2 mt-1 border-t ${backgroundTheme === 'light' ? 'border-gray-100' : 'border-gray-700'}`}>
+    <div className='w-timeline pt-2 mt-1'>
       <div className='py-2 flex flex-col w-full'>
         <h2 className='px-3 font-bold text-xl'>
           Who to follow
@@ -35,7 +35,7 @@ const PeoplesToFollowCard: React.FC = () => {
             link=''
           />
           <Link href=''>
-            <a className={`text-sm py-3 px-4 w-full ${backgroundTheme === 'light' ? 'hover:brightness-95' : 'hover:brightness-110'} duration-200`}
+            <a className={`text-sm py-3 px-4 w-[598px] ${backgroundTheme === 'light' ? 'hover:brightness-95' : 'hover:brightness-110'} duration-200`}
               style={{
                 color: colorTheme,
                 background: backgroundTheme === 'light'

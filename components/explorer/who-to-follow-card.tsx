@@ -30,7 +30,7 @@ const WhoToFollowCard: React.FC<Props> = ({ image, username, nickname, descripti
             <span className='text-sm font-bold hover:underline'>
               {nickname}
             </span>
-            <span className='text-sm text-slate-600'>
+            <span className='text-sm text-slate-400'>
               {username}
             </span>
             <span className='text-sm'>

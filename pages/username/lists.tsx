@@ -29,42 +29,42 @@ const Lists: NextPage = () => {
         }}>
           <div className='flex justify-between w-full items-center'>
             <div className='flex items-center flex-1'>
-              <button className={`rounded-full p-3 items-center justify-center ${backgroundTheme === 'light' ? 'bg-white hover:brightness-95' : 'hover:brightness-110'} duration-200`} style={{
+              <button className={`rounded-full p-2 items-center justify-center ${backgroundTheme === 'light' ? 'bg-white hover:brightness-95' : 'hover:brightness-110'} duration-200`} style={{
                 background: backgroundTheme === 'dark'
                   ? darkTheme.background
                   : backgroundTheme === 'black'
                     ? '#000'
                     : ''
               }}>
-                <BsArrowLeft className='w-6 h-6' />
+                <BsArrowLeft className='w-5 h-5' />
               </button>
               <div className='flex flex-col ml-2'>
                 <h1 className='text-xl font-bold'>
                   Lists
                 </h1>
-                <span className='text-sm text-slate-600'>
+                <span className='text-sm text-slate-400'>
                   @{username}
                 </span>
               </div>
             </div>
             <div className='flex items-center'>
-              <button className={`rounded-full p-3 items-center justify-center ${backgroundTheme === 'light' ? 'bg-white hover:brightness-95' : 'hover:brightness-110'} duration-200`} style={{
+              <button className={`rounded-full p-2 items-center justify-center ${backgroundTheme === 'light' ? 'bg-white hover:brightness-95' : 'hover:brightness-110'} duration-200`} style={{
                 background: backgroundTheme === 'dark'
                   ? darkTheme.background
                   : backgroundTheme === 'black'
                     ? '#000'
                     : ''
               }}>
-                <VscNewFile className='w-6 h-6' />
+                <VscNewFile className='w-5 h-5' />
               </button>
-              <button className={`rounded-full p-3 items-center justify-center ${backgroundTheme === 'light' ? 'bg-white hover:brightness-95' : 'hover:brightness-110'} duration-200`} style={{
+              <button className={`rounded-full p-2 items-center justify-center ${backgroundTheme === 'light' ? 'bg-white hover:brightness-95' : 'hover:brightness-110'} duration-200`} style={{
                 background: backgroundTheme === 'dark'
                   ? darkTheme.background
                   : backgroundTheme === 'black'
                     ? '#000'
                     : ''
               }}>
-                <IoIosMore className='w-6 h-6' />
+                <IoIosMore className='w-5 h-5' />
               </button>
             </div>
           </div>

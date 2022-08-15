@@ -25,7 +25,7 @@ const NotificationsLayout: React.FC<Props> = ({ children }) => {
   }, [router.asPath])
 
   return (
-    <div className={`w-timeline min-h-screen border-l border-r items-center pt-8 ${backgroundTheme === 'light' ? 'border-gray-100' : 'border-gray-700'}`} style={{
+    <div className={`w-timeline min-h-full border-l border-r items-center pt-8 ${backgroundTheme === 'light' ? 'border-gray-100' : 'border-gray-700'}`} style={{
       color: backgroundTheme === 'light'
         ? lightTheme.text
         : darkTheme.text
@@ -41,14 +41,14 @@ const NotificationsLayout: React.FC<Props> = ({ children }) => {
           <h1 className='font-bold text-xl'>
             Notifications
           </h1>
-          <button className={`p1 flex items-center justify-center rounded-full ${backgroundTheme === 'light' ? 'hover:brightness-95 active:brightness-90' : 'hover:brightness-110 active:brightness-125'} duration-200`} style={{
+          <button className={`p-2 flex items-center justify-center rounded-full ${backgroundTheme === 'light' ? 'hover:brightness-95 active:brightness-90' : 'hover:brightness-110 active:brightness-125'} duration-200`} style={{
             background: backgroundTheme === 'light'
               ? lightTheme.background
               : backgroundTheme === 'dark'
                 ? darkTheme.background
                 : '#000'
           }}>
-            <IoSettingsOutline className='w-6 h-6' />
+            <IoSettingsOutline className='w-5 h-5' />
           </button>
         </div>
         <ul className='w-full flex justify-between'>
