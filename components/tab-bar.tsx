@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useContext } from 'react'
+import React, { useState, useEffect, useCallback, useContext, useRef } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { BsTwitter } from 'react-icons/bs'
@@ -14,21 +14,35 @@ import {
 } from 'react-icons/ri'
 import { ThemeContext } from '../utils/theme'
 import { colors, darkTheme, lightTheme } from '../libs/colors'
+import PopupMenu from './popup-menu'
 
 const TabBar: React.FC = () => {
   const { backgroundTheme, colorTheme, handleBackground } = useContext(ThemeContext)
+  const refButton = useRef<HTMLButtonElement>(null)
+  const [moreActived, setMoreActived] = useState(false)
   const [currentPage, setCurrentPage] = useState([''])
   const router = useRouter()
   const handlePage = useCallback(() => {
     const path = window.location.pathname.split('/')
     setCurrentPage(path)
   }, [])
+  const handleMorePopup = useCallback(() => {
+    setMoreActived(!moreActived)
+  }, [moreActived])
 
   useEffect(() => {
     if (currentPage.join('/') !== router.asPath) {
       handlePage()
     }
   }, [router])
+
+  useEffect(() => {
+    if (moreActived) {
+      console.log('I am here')
+      refButton.current?.addEventListener('focusout', handleMorePopup, { passive: true })
+      return () => refButton.current?.removeEventListener('focusout', handleMorePopup)
+    }
+  }, [moreActived])
 
   return (
     <div className='mr-[60px]'>
@@ -154,9 +168,9 @@ const TabBar: React.FC = () => {
                 ? darkTheme.background
                 : '#000'
           }}>
-            <button className='flex items-center justify-center w-icon h-icon border-2 rounded-full bg-transparent' style={{
+            <button ref={refButton} className='flex items-center justify-center w-icon h-icon border-2 rounded-full bg-transparent' style={{
               borderColor: backgroundTheme === 'light' ? lightTheme.icon : darkTheme.icon
-            }}>
+            }} onClick={handleMorePopup}>
               <RiMoreLine className='w-6 h-6' />
             </button>
           </div>
@@ -183,6 +197,7 @@ const TabBar: React.FC = () => {
           </button>
         </li>
       </ul>
+      <PopupMenu actived={moreActived} setActived={setMoreActived} />
     </div>
   )
 }
