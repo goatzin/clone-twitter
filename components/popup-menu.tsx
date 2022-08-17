@@ -13,6 +13,7 @@ import {
 } from 'react-icons/io5'
 import { ThemeContext } from '../utils/theme'
 import { darkTheme, lightTheme } from '../libs/colors'
+import { RiBookmarkLine, RiFile2Line } from 'react-icons/ri'
 
 interface Props {
   actived: boolean
@@ -26,8 +27,36 @@ const PopupMenu: React.FC<Props> = ({ actived }) => {
         ? lightTheme.text
         : darkTheme.text
     }}>
-      <ul className='w-full flex flex-col'>
+      <ul className='w-full flex flex-col overflow-auto'>
         <li className='w-full'>
+          <Link href='/i/bookmarks'>
+            <a className={`flex short:hidden items-center py-4 px-5 w-full ${backgroundTheme === 'light' ? 'hover:brightness-95' : 'hover:brightness-110'} duration-200`} style={{
+              background: backgroundTheme === 'light'
+                ? lightTheme.background
+                : backgroundTheme === 'dark'
+                  ? darkTheme.background
+                  : '#000'
+            }}>
+              <div className='mr-4'>
+                <RiBookmarkLine className='w-5 h-5' />
+              </div>
+              Bookmarks
+            </a>
+          </Link>
+          <Link href='/username/lists'>
+            <a className={`flex short:hidden items-center py-4 px-5 w-full ${backgroundTheme === 'light' ? 'hover:brightness-95' : 'hover:brightness-110'} duration-200`} style={{
+              background: backgroundTheme === 'light'
+                ? lightTheme.background
+                : backgroundTheme === 'dark'
+                  ? darkTheme.background
+                  : '#000'
+            }}>
+              <div className='mr-4'>
+                <RiFile2Line className='w-5 h-5' />
+              </div>
+              Lists
+            </a>
+          </Link>
           <Link href='/username/topics'>
             <a className={`flex items-center py-4 px-5 w-full ${backgroundTheme === 'light' ? 'hover:brightness-95' : 'hover:brightness-110'} duration-200`} style={{
               background: backgroundTheme === 'light'
