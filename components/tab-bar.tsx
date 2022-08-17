@@ -15,11 +15,14 @@ import {
 import { ThemeContext } from '../utils/theme'
 import { colors, darkTheme, lightTheme } from '../libs/colors'
 import PopupMenu from './popup-menu'
+import ProfilePopupMenu from './profile-popup-menu'
 
 const TabBar: React.FC = () => {
   const { backgroundTheme, colorTheme, handleBackground } = useContext(ThemeContext)
-  const refButton = useRef<HTMLButtonElement>(null)
+  const refMoreButton = useRef<HTMLButtonElement>(null)
+  const refProfileButton = useRef<HTMLButtonElement>(null)
   const [moreActived, setMoreActived] = useState(false)
+  const [profilePopupActived, setProfilePopupActived] = useState(false)
   const [currentPage, setCurrentPage] = useState([''])
   const router = useRouter()
   const handlePage = useCallback(() => {
@@ -29,6 +32,9 @@ const TabBar: React.FC = () => {
   const handleMorePopup = useCallback(() => {
     setMoreActived(!moreActived)
   }, [moreActived])
+  const handleProfilePopup = useCallback(() => {
+    setProfilePopupActived(!profilePopupActived)
+  }, [profilePopupActived])
 
   useEffect(() => {
     if (currentPage.join('/') !== router.asPath) {
@@ -38,11 +44,18 @@ const TabBar: React.FC = () => {
 
   useEffect(() => {
     if (moreActived) {
-      console.log('I am here')
-      refButton.current?.addEventListener('focusout', handleMorePopup, { passive: true })
-      return () => refButton.current?.removeEventListener('focusout', handleMorePopup)
+      refMoreButton.current?.addEventListener('focusout', handleMorePopup, { passive: true })
+      return () => refMoreButton.current?.removeEventListener('focusout', handleMorePopup)
     }
   }, [moreActived])
+
+  useEffect(() => {
+    if (profilePopupActived) {
+      console.log('I am here')
+      refProfileButton.current?.addEventListener('focusout', handleProfilePopup, { passive: true })
+      return () => refProfileButton.current?.removeEventListener('focusout', handleMorePopup)
+    }
+  }, [profilePopupActived])
 
   return (
     <div className='mr-[60px]'>
@@ -161,19 +174,19 @@ const TabBar: React.FC = () => {
               }
             </a>
           </Link>
-          <div className={`tall:mb-2 w-outsideIcon h-outsideIcon flex items-center justify-center rounded-full ${backgroundTheme === 'light' ? 'hover:brightness-95 active:brightness-90' : 'hover:brightness-110 active:brightness-125'} duration-200`} style={{
+          <button ref={refMoreButton} className={`tall:mb-2 cursor-pointer w-outsideIcon h-outsideIcon flex items-center justify-center rounded-full ${backgroundTheme === 'light' ? 'hover:brightness-95 active:brightness-90' : 'hover:brightness-110 active:brightness-125'} duration-200`} style={{
             backgroundColor: backgroundTheme === 'light'
               ? lightTheme.background
               : backgroundTheme === 'dark'
                 ? darkTheme.background
                 : '#000'
-          }}>
-            <button ref={refButton} className='flex items-center justify-center w-icon h-icon border-2 rounded-full bg-transparent' style={{
+          }} onClick={handleMorePopup}>
+            <div className='flex items-center justify-center w-icon h-icon border-2 rounded-full bg-transparent' style={{
               borderColor: backgroundTheme === 'light' ? lightTheme.icon : darkTheme.icon
-            }} onClick={handleMorePopup}>
+            }}>
               <RiMoreLine className='w-6 h-6' />
-            </button>
-          </div>
+            </div>
+          </button>
           <button className='w-outsideIcon h-outsideIcon flex items-center justify-center rounded-full hover:brightness-90 active:brightness-75 duration-200' style={{
             backgroundColor: colorTheme
           }}>
@@ -181,23 +194,24 @@ const TabBar: React.FC = () => {
           </button>
         </li>
         <li className='mb-5'>
-          <div className={`flex items-center justify-center w-outsideIcon h-outsideIcon rounded-full ${backgroundTheme === 'light' ? 'hover:brightness-95 active:brightness-90' : 'hover:brightness-110 active:brightness-125'} duration-200`} style={{
+          <button ref={refProfileButton} className={`cursor-pointer flex items-center justify-center w-outsideIcon h-outsideIcon rounded-full ${backgroundTheme === 'light' ? 'hover:brightness-95 active:brightness-90' : 'hover:brightness-110 active:brightness-125'} duration-200`} style={{
             backgroundColor: backgroundTheme === 'light'
               ? lightTheme.background
               : backgroundTheme === 'dark'
                 ? darkTheme.background
                 : '#000'
-          }}>
-            <button className='flex items-center justify-center w-10 h-10 rounded-full bg-slate-300 text-slate-500'>
+          }} onClick={handleProfilePopup}>
+            <div className='flex items-center justify-center w-10 h-10 rounded-full bg-slate-300 text-slate-500'>
               <RiUser3Fill className='w-icon h-icon' />
-            </button>
-          </div>
+            </div>
+          </button>
           <button className='border' onClick={handleBackground}>
             toggle
           </button>
         </li>
       </ul>
-      <PopupMenu actived={moreActived} setActived={setMoreActived} />
+      <PopupMenu actived={moreActived} />
+      <ProfilePopupMenu actived={profilePopupActived} />
     </div>
   )
 }

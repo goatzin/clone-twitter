@@ -7,6 +7,7 @@ module.exports = {
     extend: {
       screens: {
         'xl': '1112px',
+        '2xl': '1300px',
         'short': {'raw': '(min-height: 615px)'},
         'tall': {'raw': '(min-height: 705px)'}
       },

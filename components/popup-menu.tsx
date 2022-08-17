@@ -16,7 +16,6 @@ import { darkTheme, lightTheme } from '../libs/colors'
 
 interface Props {
   actived: boolean
-  setActived: (props: boolean) => any
 }
 
 const PopupMenu: React.FC<Props> = ({ actived }) => {
