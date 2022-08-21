@@ -16,12 +16,16 @@ import { ThemeContext } from '../utils/theme'
 import { colors, darkTheme, lightTheme } from '../libs/colors'
 import PopupMenu from './popup-menu'
 import ProfilePopupMenu from './profile-popup-menu'
+import Modal from 'react-modal'
+import PostBox from './post-box'
+
+Modal.setAppElement('#__next')
 
 const TabBar: React.FC = () => {
   const nickname = 'nickname'
   const username = 'username'
   const { backgroundTheme, colorTheme, handleBackground } = useContext(ThemeContext)
-  const refMoreButton = useRef<HTMLButtonElement>(null)
+  const refMoreButton = useRef<HTMLDivElement>(null)
   const refProfileButton = useRef<HTMLButtonElement>(null)
   const [moreActived, setMoreActived] = useState(false)
   const [profilePopupActived, setProfilePopupActived] = useState(false)
@@ -45,8 +49,8 @@ const TabBar: React.FC = () => {
   }, [router])
 
   useEffect(() => {
-    if (moreActived) {
-      refMoreButton.current?.addEventListener('focusout', handleMorePopup, { passive: true })
+    if (moreActived && refMoreButton.current) {
+      refMoreButton.current.addEventListener('focusout', handleMorePopup, { passive: true })
       return () => refMoreButton.current?.removeEventListener('focusout', handleMorePopup)
     }
   }, [moreActived])
@@ -253,7 +257,7 @@ const TabBar: React.FC = () => {
                   ? darkTheme.background
                   : '#000'
             }}>
-              {currentPage[1] === 'username' && currentPage[2] !== 'lists'
+              {currentPage[1] === 'username' && currentPage.length <= 2
                 ? (
                   <div className='flex'>
                     <RiUser3Fill className='w-icon h-icon' />
@@ -273,7 +277,7 @@ const TabBar: React.FC = () => {
               }
             </a>
           </Link>
-          <button ref={refMoreButton} className={`tall:mb-2 cursor-pointer w-outsideIcon h-outsideIcon 2xl:w-max 2xl:h-max 2xl:p-3 flex items-center justify-center rounded-full ${backgroundTheme === 'light' ? 'hover:brightness-95 active:brightness-90' : 'hover:brightness-110 active:brightness-125'} duration-200`} style={{
+          <button className={`tall:mb-2 cursor-pointer w-outsideIcon h-outsideIcon 2xl:w-max 2xl:h-max 2xl:p-3 flex items-center justify-center rounded-full ${backgroundTheme === 'light' ? 'hover:brightness-95 active:brightness-90' : 'hover:brightness-110 active:brightness-125'} duration-200`} style={{
             backgroundColor: backgroundTheme === 'light'
               ? lightTheme.background
               : backgroundTheme === 'dark'
@@ -291,14 +295,16 @@ const TabBar: React.FC = () => {
               </span>
             </div>
           </button>
-          <button className='w-outsideIcon h-outsideIcon 2xl:w-min 2xl:h-min flex items-center justify-center rounded-full hover:brightness-90 active:brightness-75 duration-200' style={{
-            backgroundColor: colorTheme
-          }}>
-            <RiQuillPenFill className='w-icon h-icon text-white 2xl:hidden' />
-            <span className='hidden text-xl font-bold 2xl:inline-block text-white py-3 px-10'>
-              Tweet
-            </span>
-          </button>
+          <Link href={`${router.asPath}/?value=tweet`} as='/compose/tweet'>
+            <a className='w-outsideIcon h-outsideIcon 2xl:w-min 2xl:h-min flex items-center justify-center rounded-full hover:brightness-90 active:brightness-75 duration-200' style={{
+              backgroundColor: colorTheme
+            }}>
+              <RiQuillPenFill className='w-icon h-icon text-white 2xl:hidden' />
+              <span className='hidden text-xl font-bold 2xl:inline-block text-white py-3 px-10'>
+                Tweet
+              </span>
+            </a>
+          </Link>
         </li>
         <li className='mb-5'>
           <button ref={refProfileButton} className={`cursor-pointer flex items-center justify-center w-outsideIcon h-outsideIcon 2xl:w-max 2xl:h-max 2xl:py-2 2xl:px-3 rounded-full ${backgroundTheme === 'light' ? 'hover:brightness-95 active:brightness-90' : 'hover:brightness-110 active:brightness-125'} duration-200`} style={{
@@ -328,8 +334,41 @@ const TabBar: React.FC = () => {
           </button>
         </li>
       </ul>
-      <PopupMenu actived={moreActived} />
-      <ProfilePopupMenu actived={profilePopupActived} />
+      {moreActived && (
+        <div className='absolute left-0 top-0 z-20 w-full h-full' onClick={handleMorePopup}>
+          <PopupMenu />
+        </div>
+      )}
+      {profilePopupActived && (
+        <div className='absolute top-0 left-0 max-w-full max-h-full z-50' onClick={handleProfilePopup}>
+          <ProfilePopupMenu />
+        </div>
+      )}
+      <Modal
+        isOpen={!!router.query.value}
+        onRequestClose={() => router.back()}
+        className='border-none rounded-xl p-2 max-w-max max-h-max'
+        overlayElement={(props, contentElement) => (
+          <div {...props} className='flex flex-col items-center pt-12'>
+            {contentElement}
+          </div>
+        )}
+        style={{
+          overlay: {
+            zIndex: 20,
+            background: 'rgba(0,0,0,0.5)'
+          },
+          content: {
+            background: backgroundTheme === 'light'
+              ? lightTheme.background
+              : backgroundTheme === 'dark'
+                ? darkTheme.background
+                : '#000',
+          }
+        }}
+      >
+        <PostBox autoTextAreaRows={false} rows={5} />
+      </Modal>
     </div>
   )
 }

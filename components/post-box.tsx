@@ -2,13 +2,18 @@ import React, { useCallback, useContext, useEffect, useState } from 'react'
 import Link from 'next/link'
 import { AiOutlineFileGif } from 'react-icons/ai'
 import { HiOutlineChartBar } from 'react-icons/hi'
-import { RiUser3Line, RiMapPinLine } from 'react-icons/ri'
+import { RiUser3Fill, RiMapPinLine } from 'react-icons/ri'
 import { BsImage, BsEmojiSmile, BsCalendar4Event } from 'react-icons/bs'
 import { ThemeContext } from '../utils/theme'
 import { lightTheme, darkTheme } from '../libs/colors'
 import AutoTextArea from './auto-textarea'
 
-const PostBox: React.FC = () => {
+interface PostBoxValue {
+  rows: number
+  autoTextAreaRows: boolean
+}
+
+const PostBox: React.FC<PostBoxValue> = ({ rows, autoTextAreaRows }) => {
   const { backgroundTheme, colorTheme } = useContext(ThemeContext)
   // configure later
   const [status, setStatus] = useState({
@@ -41,17 +46,11 @@ const PostBox: React.FC = () => {
   }, [input.post])
 
   return (
-    <div className='flex flex-row mt-4 py-2 px-5'>
+    <div className='flex flex-row mt-4 py-2 px-5 w-[600px]'>
       <div className='flex justify-center text-slate-400'>
         <Link href='/username'>
-          <a className={`w-12 h-12 border rounded-full flex justify-center items-center ${backgroundTheme === 'light' ? 'hover:brightness-95' : 'hover:brightness-110'} duration-200`} style={{
-            backgroundColor: backgroundTheme === 'light'
-              ? lightTheme.background
-              : backgroundTheme === 'dark'
-                ? darkTheme.background
-                : '#000'
-          }}>
-            <RiUser3Line className='w-7 h-7' />
+          <a className={`bg-slate-300 text-slate-500 w-12 h-12 border rounded-full flex justify-center items-center ${backgroundTheme === 'light' ? 'hover:brightness-95' : 'hover:brightness-110'} duration-200`}>
+            <RiUser3Fill className='w-7 h-7' />
           </a>
         </Link>
       </div>
@@ -59,15 +58,32 @@ const PostBox: React.FC = () => {
         color: backgroundTheme === 'light' ? lightTheme.text : darkTheme.text
       }}>
         <form className='flex flex-col min-w-full'>
-          <AutoTextArea
-            id='post'
-            name='post'
-            className='text-lg w-full min-h-min outline-none bg-transparent overflow-hidden resize-none p-2 placeholder:text-xl placeholder:items-center'
-            placeholder="What's happening"
-            maxLength={280}
-            value={input.post}
-            onChange={handleOnChange}
-          />
+          {autoTextAreaRows
+            ? (
+              <AutoTextArea
+                id='post'
+                name='post'
+                className='text-lg w-full min-h-min outline-none bg-transparent overflow-hidden resize-none p-2 placeholder:text-xl placeholder:items-center'
+                placeholder="What's happening"
+                maxLength={280}
+                rows={rows}
+                value={input.post}
+                onChange={handleOnChange}
+              />
+            )
+            : (
+              <textarea
+                id='post'
+                name='post'
+                className='text-lg w-full min-h-min outline-none bg-transparent overflow-hidden resize-none p-2 placeholder:text-xl placeholder:items-center'
+                placeholder="What's happening"
+                maxLength={280}
+                rows={rows}
+                value={input.post}
+                onChange={handleOnChange}
+              />
+            )
+          }
           <div className='flex items-center justify-between pt-4' style={{
             color: colorTheme
           }}>

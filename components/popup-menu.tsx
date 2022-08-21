@@ -15,14 +15,11 @@ import { ThemeContext } from '../utils/theme'
 import { darkTheme, lightTheme } from '../libs/colors'
 import { RiBookmarkLine, RiFile2Line } from 'react-icons/ri'
 
-interface Props {
-  actived: boolean
-}
-
-const PopupMenu: React.FC<Props> = ({ actived }) => {
+const PopupMenu: React.FC = () => {
   const { backgroundTheme } = useContext(ThemeContext)
-  return actived ? (
-    <div className={`fixed top-0 z-20 min-w-[225px] ${backgroundTheme === 'light' ? 'drop-shadow-xl' : 'drop-shadow-[0_20px_13px_rgba(255,255,255,.05)]'} rounded-xl`} style={{
+
+  return (
+    <div className={`fixed top-0 z-50 min-w-[225px] ml-5 ${backgroundTheme === 'light' ? 'drop-shadow-xl' : 'drop-shadow-[0_20px_13px_rgba(255,255,255,.05)]'} rounded-xl`} style={{
       color: backgroundTheme === 'light'
         ? lightTheme.text
         : darkTheme.text
@@ -200,7 +197,7 @@ const PopupMenu: React.FC<Props> = ({ actived }) => {
         </li>
       </ul>
     </div>
-  ) : (null)
+  )
 }
 
 export default PopupMenu
