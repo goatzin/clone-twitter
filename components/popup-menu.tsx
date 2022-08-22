@@ -19,12 +19,12 @@ const PopupMenu: React.FC = () => {
   const { backgroundTheme } = useContext(ThemeContext)
 
   return (
-    <div className={`fixed top-0 z-50 min-w-[225px] ml-5 ${backgroundTheme === 'light' ? 'drop-shadow-xl' : 'drop-shadow-[0_20px_13px_rgba(255,255,255,.05)]'} rounded-xl`} style={{
+    <div className={`fixed top-0 min-w-[225px] ml-5 ${backgroundTheme === 'light' ? 'drop-shadow-xl' : 'drop-shadow-[0_20px_13px_rgba(255,255,255,.05)]'} rounded-xl`} style={{
       color: backgroundTheme === 'light'
         ? lightTheme.text
-        : darkTheme.text
+        : darkTheme.text,
     }}>
-      <ul className='w-full flex flex-col overflow-auto'>
+      <ul className='w-full flex flex-col overflow-auto z-20'>
         <li className='w-full'>
           <Link href='/i/bookmarks'>
             <a className={`flex short:hidden items-center py-4 px-5 w-full ${backgroundTheme === 'light' ? 'hover:brightness-95' : 'hover:brightness-110'} duration-200`} style={{

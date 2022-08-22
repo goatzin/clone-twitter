@@ -13,7 +13,7 @@ const Home: NextPage = () => {
       <div id='home' className={`w-timeline min-h-full border-l border-r ${backgroundTheme === 'light' ? 'border-gray-100' : 'border-gray-700'} items-center pt-8`} style={{
         color: backgroundTheme === 'light' ? lightTheme.text : darkTheme.text
       }}>
-        <div className='w-[598px] backdrop-blur-sm min-w-min flex justify-between items-center py-2 px-5 z-10 fixed top-0' style={{
+        <div className='w-[598px] z-10 backdrop-blur-sm min-w-min flex justify-between items-center py-2 px-5 fixed top-0' style={{
           background: backgroundTheme === 'light'
             ? 'rgba(255, 255, 255, 0.85)'
             : backgroundTheme === 'dark'

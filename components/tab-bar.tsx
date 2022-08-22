@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useContext, useRef } from 'react'
+import React, { useState, useEffect, useCallback, useContext } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { BsTwitter } from 'react-icons/bs'
@@ -10,37 +10,22 @@ import {
   RiBookmarkLine, RiBookmarkFill,
   RiFileList2Fill, RiFileList2Line,
   RiUser3Line, RiUser3Fill,
-  RiMoreLine, RiQuillPenFill
 } from 'react-icons/ri'
 import { ThemeContext } from '../utils/theme'
 import { colors, darkTheme, lightTheme } from '../libs/colors'
-import PopupMenu from './popup-menu'
-import ProfilePopupMenu from './profile-popup-menu'
-import Modal from 'react-modal'
-import PostBox from './post-box'
-
-Modal.setAppElement('#__next')
+import TabButton from './tab-button'
+import MoreButton from './more-button'
+import TweetButton from './tweet-button'
+import ProfileButton from './profile-button'
 
 const TabBar: React.FC = () => {
-  const nickname = 'nickname'
-  const username = 'username'
-  const { backgroundTheme, colorTheme, handleBackground } = useContext(ThemeContext)
-  const refMoreButton = useRef<HTMLDivElement>(null)
-  const refProfileButton = useRef<HTMLButtonElement>(null)
-  const [moreActived, setMoreActived] = useState(false)
-  const [profilePopupActived, setProfilePopupActived] = useState(false)
+  const { backgroundTheme, handleBackground } = useContext(ThemeContext)
   const [currentPage, setCurrentPage] = useState([''])
   const router = useRouter()
   const handlePage = useCallback(() => {
     const path = window.location.pathname.split('/')
     setCurrentPage(path)
   }, [])
-  const handleMorePopup = useCallback(() => {
-    setMoreActived(!moreActived)
-  }, [moreActived])
-  const handleProfilePopup = useCallback(() => {
-    setProfilePopupActived(!profilePopupActived)
-  }, [profilePopupActived])
 
   useEffect(() => {
     if (currentPage.join('/') !== router.asPath) {
@@ -48,26 +33,12 @@ const TabBar: React.FC = () => {
     }
   }, [router])
 
-  useEffect(() => {
-    if (moreActived && refMoreButton.current) {
-      refMoreButton.current.addEventListener('focusout', handleMorePopup, { passive: true })
-      return () => refMoreButton.current?.removeEventListener('focusout', handleMorePopup)
-    }
-  }, [moreActived])
-
-  useEffect(() => {
-    if (profilePopupActived) {
-      refProfileButton.current?.addEventListener('focusout', handleProfilePopup, { passive: true })
-      return () => refProfileButton.current?.removeEventListener('focusout', handleMorePopup)
-    }
-  }, [profilePopupActived])
-
   return (
-    <div className='mr-[60px] 2xl:mr-[280px] flex'>
-      <ul className='mr-6 min-w-max flex flex-col items-center justify-between 2xl:items-start 2xl:left-5 min-h-screen fixed' style={{
+    <div className='mr-[60px] 2xl:mr-[280px] flex z-10'>
+      <nav className='mr-6 min-w-max flex flex-col items-center justify-between 2xl:items-start 2xl:left-5 min-h-screen fixed' style={{
         color: backgroundTheme === 'light' ? lightTheme.icon : darkTheme.icon,
       }}>
-        <li className='flex flex-col w-full min-h-min'>
+        <div className='flex flex-col w-full min-h-min'>
           <Link href='/home'>
             <a className={`tall:mb-2 w-outsideIcon h-outsideIcon flex items-center justify-center rounded-full ${backgroundTheme === 'light' ? 'hover:bg-blue-100' : 'hover:brightness-110'} duration-200`} style={{
               backgroundColor: backgroundTheme === 'dark'
@@ -81,294 +52,83 @@ const TabBar: React.FC = () => {
               }} />
             </a>
           </Link>
-          <Link href='/home'>
-            <a className={`tall:mb-2 w-outsideIcon h-outsideIcon 2xl:w-max 2xl:h-max 2xl:p-3 flex items-center justify-center rounded-full ${backgroundTheme === 'light' ? 'hover:brightness-95' : 'hover:brightness-110'} duration-200`} style={{
-              backgroundColor: backgroundTheme === 'light'
-                ? lightTheme.background
-                : backgroundTheme === 'dark'
-                  ? darkTheme.background
-                  : '#000'
-            }}>
-              {currentPage[1] === 'home'
-                ? (
-                  <div className='flex'>
-                    <RiHome7Fill className='w-icon h-icon' />
-                    <span className='hidden 2xl:inline-block font-bold text-xl mx-4'>
-                      Home
-                    </span>
-                  </div>
-                )
-                : (
-                  <div className='flex'>
-                    <RiHome7Line className='w-icon h-icon' />
-                    <span className='hidden 2xl:inline-block text-xl mx-4'>
-                      Home
-                    </span>
-                  </div>
-                )
-              }
-            </a>
-          </Link>
-          <Link href='/explorer'>
-            <a className={`tall:mb-2 w-outsideIcon h-outsideIcon 2xl:w-max 2xl:h-max 2xl:p-3 flex items-center justify-center rounded-full ${backgroundTheme === 'light' ? 'hover:brightness-95' : 'hover:brightness-110'} duration-200`} style={{
-              backgroundColor: backgroundTheme === 'light'
-                ? lightTheme.background
-                : backgroundTheme === 'dark'
-                  ? darkTheme.background
-                  : '#000'
-            }}>
-              {currentPage[1] === 'explorer'
-                ? (
-                  <div className='flex'>
-                    <RiSearch2Fill className='w-icon h-icon' />
-                    <span className='hidden 2xl:inline-block text-xl font-bold mx-4'>
-                      Explore
-                    </span>
-                  </div>
-                )
-                : (
-                  <div className='flex'>
-                    <RiSearch2Line className='w-icon h-icon' />
-                    <span className='hidden 2xl:inline-block text-xl mx-4'>
-                      Explore
-                    </span>
-                  </div>
-                )
-              }
-            </a>
-          </Link>
-          <Link href='/notifications'>
-            <a className={`tall:mb-2 w-outsideIcon h-outsideIcon 2xl:w-max 2xl:h-max 2xl:p-3 flex items-center justify-center rounded-full ${backgroundTheme === 'light' ? 'hover:brightness-95' : 'hover:brightness-110'} duration-200`} style={{
-              backgroundColor: backgroundTheme === 'light'
-                ? lightTheme.background
-                : backgroundTheme === 'dark'
-                  ? darkTheme.background
-                  : '#000'
-            }}>
-              {currentPage[1] === 'notifications'
-                ? (
-                  <div className='flex'>
-                    <RiNotification2Fill className='w-icon h-icon' />
-                    <span className='hidden 2xl:inline-block text-xl font-bold mx-4'>
-                      Notifications
-                    </span>
-                  </div>
-                )
-                : (
-                  <div className='flex'>
-                    <RiNotification2Line className='w-icon h-icon' />
-                    <span className='hidden 2xl:inline-block text-xl mx-4'>
-                      Notifications
-                    </span>
-                  </div>
-                )
-              }
-            </a>
-          </Link>
-          <Link href='/messages'>
-            <a className={`tall:mb-2 w-outsideIcon h-outsideIcon 2xl:w-max 2xl:h-max 2xl:p-3 flex items-center justify-center rounded-full ${backgroundTheme === 'light' ? 'hover:brightness-95' : 'hover:brightness-110'} duration-200`} style={{
-              backgroundColor: backgroundTheme === 'light'
-                ? lightTheme.background
-                : backgroundTheme === 'dark'
-                  ? darkTheme.background
-                  : '#000'
-            }}>
-              {currentPage[1] === 'messages'
-                ? (
-                  <div className='flex'>
-                    <RiMailFill className='w-icon h-icon' />
-                    <span className='hidden 2xl:inline-block text-xl font-bold mx-4'>
-                      Messages
-                    </span>
-                  </div>
-                )
-                : (
-                  <div className='flex'>
-                    <RiMailLine className='w-icon h-icon' />
-                    <span className='hidden 2xl:inline-block text-xl mx-4'>
-                      Messages
-                    </span>
-                  </div>
-                )
-              }
-            </a>
-          </Link>
-          <Link href='/i/bookmarks'>
-            <a className={`hidden short:flex tall:mb-2 w-outsideIcon h-outsideIcon 2xl:w-max 2xl:h-max 2xl:p-3 items-center justify-center rounded-full ${backgroundTheme === 'light' ? 'hover:brightness-95' : 'hover:brightness-110'} duration-200`} style={{
-              backgroundColor: backgroundTheme === 'light'
-                ? lightTheme.background
-                : backgroundTheme === 'dark'
-                  ? darkTheme.background
-                  : '#000'
-            }}>
-              {currentPage[2] === 'bookmarks'
-                ? (
-                  <div className='flex'>
-                    <RiBookmarkFill className='w-icon h-icon' />
-                    <span className='hidden 2xl:inline-block text-xl font-bold mx-4'>
-                      Bookmarks
-                    </span>
-                  </div>
-                )
-                : (
-                  <div className='flex'>
-                    <RiBookmarkLine className='w-icon h-icon' />
-                    <span className='hidden 2xl:inline-block text-xl mx-4'>
-                      Bookmarks
-                    </span>
-                  </div>
-                )
-              }
-            </a>
-          </Link>
-          <Link href='/username/lists'>
-            <a className={`hidden short:flex tall:mb-2 w-outsideIcon h-outsideIcon 2xl:w-max 2xl:h-max 2xl:p-3 items-center justify-center rounded-full ${backgroundTheme === 'light' ? 'hover:brightness-95' : 'hover:brightness-110'} duration-200`} style={{
-              backgroundColor: backgroundTheme === 'light'
-                ? lightTheme.background
-                : backgroundTheme === 'dark'
-                  ? darkTheme.background
-                  : '#000'
-            }}>
-              {currentPage[2] === 'lists'
-                ? (
-                  <div className='flex'>
-                    <RiFileList2Fill className='w-icon h-icon' />
-                    <span className='hidden 2xl:inline-block text-xl font-bold mx-4'>
-                      Lists
-                    </span>
-                  </div>
-                )
-                : (
-                  <div className='flex'>
-                    <RiFileList2Line className='w-icon h-icon' />
-                    <span className='hidden 2xl:inline-block text-xl mx-4'>
-                      Lists
-                    </span>
-                  </div>
-                )
-              }
-            </a>
-          </Link>
-          <Link href='/username'>
-            <a className={`tall:mb-2 w-outsideIcon h-outsideIcon 2xl:w-max 2xl:h-max 2xl:p-3 flex items-center justify-center rounded-full ${backgroundTheme === 'light' ? 'hover:brightness-95' : 'hover:brightness-110'} duration-200`} style={{
-              backgroundColor: backgroundTheme === 'light'
-                ? lightTheme.background
-                : backgroundTheme === 'dark'
-                  ? darkTheme.background
-                  : '#000'
-            }}>
-              {currentPage[1] === 'username' && currentPage.length <= 2
-                ? (
-                  <div className='flex'>
-                    <RiUser3Fill className='w-icon h-icon' />
-                    <span className='hidden 2xl:inline-block text-xl font-bold mx-4'>
-                      Profile
-                    </span>
-                  </div>
-                )
-                : (
-                  <div className='flex'>
-                    <RiUser3Line className='w-icon h-icon' />
-                    <span className='hidden 2xl:inline-block text-xl mx-4'>
-                      Profile
-                    </span>
-                  </div>
-                )
-              }
-            </a>
-          </Link>
-          <button className={`tall:mb-2 cursor-pointer w-outsideIcon h-outsideIcon 2xl:w-max 2xl:h-max 2xl:p-3 flex items-center justify-center rounded-full ${backgroundTheme === 'light' ? 'hover:brightness-95 active:brightness-90' : 'hover:brightness-110 active:brightness-125'} duration-200`} style={{
-            backgroundColor: backgroundTheme === 'light'
-              ? lightTheme.background
-              : backgroundTheme === 'dark'
-                ? darkTheme.background
-                : '#000'
-          }} onClick={handleMorePopup}>
-            <div className='flex items-center'>
-              <div className='flex items-center justify-center w-icon h-icon border-2 rounded-full bg-transparent' style={{
-                borderColor: backgroundTheme === 'light' ? lightTheme.icon : darkTheme.icon
-              }}>
-                <RiMoreLine className='w-6 h-6' />
-              </div>
-              <span className='hidden 2xl:inline-block text-xl mx-4'>
-                More
-              </span>
-            </div>
-          </button>
-          <Link href={`${router.asPath}/?value=tweet`} as='/compose/tweet'>
-            <a className='w-outsideIcon h-outsideIcon 2xl:w-min 2xl:h-min flex items-center justify-center rounded-full hover:brightness-90 active:brightness-75 duration-200' style={{
-              backgroundColor: colorTheme
-            }}>
-              <RiQuillPenFill className='w-icon h-icon text-white 2xl:hidden' />
-              <span className='hidden text-xl font-bold 2xl:inline-block text-white py-3 px-10'>
-                Tweet
-              </span>
-            </a>
-          </Link>
-        </li>
-        <li className='mb-5'>
-          <button ref={refProfileButton} className={`cursor-pointer flex items-center justify-center w-outsideIcon h-outsideIcon 2xl:w-max 2xl:h-max 2xl:py-2 2xl:px-3 rounded-full ${backgroundTheme === 'light' ? 'hover:brightness-95 active:brightness-90' : 'hover:brightness-110 active:brightness-125'} duration-200`} style={{
-            backgroundColor: backgroundTheme === 'light'
-              ? lightTheme.background
-              : backgroundTheme === 'dark'
-                ? darkTheme.background
-                : '#000'
-          }} onClick={handleProfilePopup}>
-            <div className='flex items-center justify-center p-3 rounded-full bg-slate-300 text-slate-500'>
-              <RiUser3Fill className='w-icon h-icon' />
-            </div>
-            <div className='hidden 2xl:flex w-full justify-between items-center ml-2'>
-              <div className='flex flex-col items-start'>
-                <span className='text-base'>
-                  {nickname}
-                </span>
-                <span className='text-base text-slate-400'>
-                  @{username}
-                </span>
-              </div>
-              <RiMoreLine className='w-icon h-icon text-slate-400 ml-10' />
-            </div>
-          </button>
+          <TabButton
+            link='/home'
+            linkName='home'
+            name='Home'
+            condition={true}
+            activedIcon={<RiHome7Fill className='w-icon h-icon' />}
+            desativedIcon={<RiHome7Line className='w-icon h-icon' />}
+            currentPage={currentPage[1]}
+          />
+          <TabButton
+            link='/explorer'
+            linkName='explorer'
+            name='Explore'
+            condition={true}
+            activedIcon={<RiSearch2Fill className='w-icon h-icon' />}
+            desativedIcon={<RiSearch2Line className='w-icon h-icon' />}
+            currentPage={currentPage[1]}
+          />
+          <TabButton
+            link='/notifications'
+            linkName='notifications'
+            name='Notifications'
+            condition={true}
+            activedIcon={<RiNotification2Fill className='w-icon h-icon' />}
+            desativedIcon={<RiNotification2Line className='w-icon h-icon' />}
+            currentPage={currentPage[1]}
+          />
+          <TabButton
+            link='/messages'
+            linkName='messages'
+            name='Messages'
+            condition={true}
+            activedIcon={<RiMailFill className='w-icon h-icon' />}
+            desativedIcon={<RiMailLine className='w-icon h-icon' />}
+            currentPage={currentPage[1]}
+          />
+          <div className='hidden short:flex'>
+            <TabButton
+              link='/i/bookmarks'
+              linkName='bookmarks'
+              name='Bookmarks'
+              condition={true}
+              activedIcon={<RiBookmarkFill className='w-icon h-icon' />}
+              desativedIcon={<RiBookmarkLine className='w-icon h-icon' />}
+              currentPage={currentPage[2]}
+            />
+          </div>
+          <div className='hidden short:flex'>
+            <TabButton
+              link='/username/lists'
+              linkName='lists'
+              name='Lists'
+              condition={true}
+              activedIcon={<RiFileList2Fill className='w-icon h-icon' />}
+              desativedIcon={<RiFileList2Line className='w-icon h-icon' />}
+              currentPage={currentPage[2]}
+            />
+          </div>
+          <TabButton
+            link='/username'
+            linkName='username'
+            name='Profile'
+            condition={currentPage.length <= 2}
+            activedIcon={<RiUser3Fill className='w-icon h-icon' />}
+            desativedIcon={<RiUser3Line className='w-icon h-icon' />}
+            currentPage={currentPage[1]}
+          />
+          <MoreButton />
+          <TweetButton />
+        </div>
+        <div className='mb-5'>
+          <ProfileButton />
           <button className='border' onClick={handleBackground}>
             toggle
           </button>
-        </li>
-      </ul>
-      {moreActived && (
-        <div className='absolute left-0 top-0 z-20 w-full h-full' onClick={handleMorePopup}>
-          <PopupMenu />
         </div>
-      )}
-      {profilePopupActived && (
-        <div className='absolute top-0 left-0 max-w-full max-h-full z-50' onClick={handleProfilePopup}>
-          <ProfilePopupMenu />
-        </div>
-      )}
-      <Modal
-        isOpen={!!router.query.value}
-        onRequestClose={() => router.back()}
-        className='border-none rounded-xl p-2 max-w-max max-h-max'
-        overlayElement={(props, contentElement) => (
-          <div {...props} className='flex flex-col items-center pt-12'>
-            {contentElement}
-          </div>
-        )}
-        style={{
-          overlay: {
-            zIndex: 20,
-            background: 'rgba(0,0,0,0.5)'
-          },
-          content: {
-            background: backgroundTheme === 'light'
-              ? lightTheme.background
-              : backgroundTheme === 'dark'
-                ? darkTheme.background
-                : '#000',
-          }
-        }}
-      >
-        <PostBox autoTextAreaRows={false} rows={5} />
-      </Modal>
+      </nav>
     </div>
   )
 }
