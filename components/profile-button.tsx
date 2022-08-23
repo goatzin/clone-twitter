@@ -50,14 +50,12 @@ const ProfileButton: React.FC = () => {
           <RiMoreLine className='w-icon h-icon text-slate-400 ml-10' />
         </div>
       </button>
+      <div className={`absolute inline-block 2xl:hidden pointer-events-none z-20 bg-black text-white text-xs p-1 rounded-md ${showName ? 'opacity-70' : 'opacity-0'} transition-opacity`}>
+        Accouts
+      </div>
       {popupActived && (
         <div className='fixed top-0 left-0 w-full h-full z-10' onClick={handlePopup}>
           <ProfilePopupMenu />
-        </div>
-      )}
-      {showName && (
-        <div className='absolute inline-block 2xl:hidden pointer-events-none z-20 bg-black text-white text-xs p-1 opacity-70 rounded-md'>
-          Accouts
         </div>
       )}
     </div>

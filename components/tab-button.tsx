@@ -56,11 +56,9 @@ const TabButton: React.FC<TabButtonValue> = ({ link, name, linkName, currentPage
           }
         </a>
       </Link>
-      {showName && (
-        <div className='absolute inline-block 2xl:hidden pointer-events-none z-20 bg-black text-white text-xs p-1 mt-14 opacity-70 rounded-md'>
-          {name}
-        </div>
-      )}
+      <div className={`absolute inline-block 2xl:hidden pointer-events-none z-20 bg-black text-white text-xs p-1 mt-14 rounded-md ${showName ? 'opacity-70' : 'opacity-0'} transition-opacity`}>
+        {name}
+      </div>
     </div>
   )
 }

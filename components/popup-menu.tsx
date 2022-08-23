@@ -19,7 +19,7 @@ const PopupMenu: React.FC = () => {
   const { backgroundTheme } = useContext(ThemeContext)
 
   return (
-    <div className={`fixed top-0 min-w-[225px] ml-5 ${backgroundTheme === 'light' ? 'drop-shadow-xl' : 'drop-shadow-[0_20px_13px_rgba(255,255,255,.05)]'} rounded-xl`} style={{
+    <div className={`fixed z-30 top-0 min-w-[225px] ml-5 ${backgroundTheme === 'light' ? 'drop-shadow-xl' : 'drop-shadow-[0_20px_13px_rgba(255,255,255,.05)]'} rounded-xl`} style={{
       color: backgroundTheme === 'light'
         ? lightTheme.text
         : darkTheme.text,

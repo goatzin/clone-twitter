@@ -34,7 +34,7 @@ const TabBar: React.FC = () => {
   }, [router])
 
   return (
-    <div className='mr-[60px] 2xl:mr-[280px] flex z-10'>
+    <div className='mr-[60px] 2xl:mr-[280px] flex z-30'>
       <nav className='mr-6 min-w-max flex flex-col items-center justify-between 2xl:items-start 2xl:left-5 min-h-screen fixed' style={{
         color: backgroundTheme === 'light' ? lightTheme.icon : darkTheme.icon,
       }}>
@@ -114,7 +114,7 @@ const TabBar: React.FC = () => {
             link='/username'
             linkName='username'
             name='Profile'
-            condition={currentPage.length <= 2}
+            condition={currentPage[2] !== 'lists' && currentPage[2] !== 'topics'}
             activedIcon={<RiUser3Fill className='w-icon h-icon' />}
             desativedIcon={<RiUser3Line className='w-icon h-icon' />}
             currentPage={currentPage[1]}

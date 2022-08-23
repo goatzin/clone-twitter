@@ -1,16 +1,16 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react'
-import Link from 'next/link'
 import { darkTheme, lightTheme } from '../../libs/colors'
 import { ThemeContext } from '../../utils/theme'
 import { useRouter } from 'next/router'
 import { IoSettingsOutline } from 'react-icons/io5'
+import TabListButton from '../tab-list-button'
 
 interface Props {
   children: any
 }
 
 const NotificationsLayout: React.FC<Props> = ({ children }) => {
-  const { backgroundTheme, colorTheme } = useContext(ThemeContext)
+  const { backgroundTheme } = useContext(ThemeContext)
   const [currentPage, setCurrentPage] = useState('')
   const router = useRouter()
   const handlePage = useCallback(() => {
@@ -51,48 +51,20 @@ const NotificationsLayout: React.FC<Props> = ({ children }) => {
             <IoSettingsOutline className='w-5 h-5' />
           </button>
         </div>
-        <ul className='w-full flex justify-between'>
-          <li className='w-full'>
-            <Link href='/notifications'>
-              <a className={`w-full pt-3 flex items-center justify-center ${backgroundTheme === 'light' ? 'hover:bg-neutral-100' : 'hover:bg-gray-800'} duration-200`} style={{
-                fontWeight: currentPage === 'notifications'
-                  ? 'bold'
-                  : 'normal'
-              }}>
-                <div style={{
-                  borderBottom: currentPage === 'notifications'
-                    ? `5px solid ${colorTheme}`
-                    : '',
-                  paddingBottom: currentPage === 'notifications'
-                    ? '8px'
-                    : '12px'
-                }}>
-                  All
-                </div>
-              </a>
-            </Link>
-          </li>
-          <li className='w-full'>
-            <Link href='/notifications/mentions'>
-              <a className={`w-full pt-3 flex items-center justify-center ${backgroundTheme === 'light' ? 'hover:bg-neutral-100' : 'hover:bg-gray-800'} duration-200`} style={{
-                fontWeight: currentPage === 'mentions'
-                  ? 'bold'
-                  : 'normal'
-              }}>
-                <div style={{
-                  borderBottom: currentPage === 'mentions'
-                    ? `5px solid ${colorTheme}`
-                    : '',
-                  paddingBottom: currentPage === 'mentions'
-                    ? '8px'
-                    : '12px'
-                }}>
-                  Mentions
-                </div>
-              </a>
-            </Link>
-          </li>
-        </ul>
+        <nav className='w-full flex justify-between'>
+          <TabListButton
+            link='/notifications'
+            linkName='notifications'
+            name='All'
+            currentPage={currentPage}
+          />
+          <TabListButton
+            link='/notifications/mentions'
+            linkName='mentions'
+            name='Mentions'
+            currentPage={currentPage}
+          />
+        </nav>
       </div>
       {children}
     </div>

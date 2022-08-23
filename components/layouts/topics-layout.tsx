@@ -1,16 +1,15 @@
-import { useRouter } from 'next/router'
 import React, { useCallback, useContext, useEffect, useState } from 'react'
-import { IoSettingsOutline } from 'react-icons/io5'
-import { lightTheme, darkTheme } from '../../libs/colors'
+import { BsArrowLeft } from 'react-icons/bs'
+import { darkTheme, lightTheme } from '../../libs/colors'
 import { ThemeContext } from '../../utils/theme'
-import SearchBar from '../search-bar'
+import { useRouter } from 'next/router'
 import TabListButton from '../tab-list-button'
 
 interface Props {
   children: any
 }
 
-const ExplorerLayout: React.FC<Props> = ({ children }) => {
+const TopicsLayout: React.FC<Props> = ({ children }) => {
   const { backgroundTheme } = useContext(ThemeContext)
   const [currentPage, setCurrentPage] = useState('')
   const router = useRouter()
@@ -38,57 +37,47 @@ const ExplorerLayout: React.FC<Props> = ({ children }) => {
             ? 'rgba(21, 32, 43, 0.85)'
             : 'rgba(0, 0, 0, 0.85)'
       }}>
-        <div className='w-full flex justify-between items-center px-5'>
-          <div className='min-w-[502px]'>
-            <SearchBar />
-          </div>
-          <button className={`p-2 flex items-center justify-center rounded-full ${backgroundTheme === 'light' ? 'hover:brightness-95 active:brightness-90' : 'hover:brightness-110 active:brightness-125'} duration-200`} style={{
+        <div className='min-w-full flex px-5'>
+          <button className={`rounded-full p-2 mr-5 flex items-center justify-center ${backgroundTheme === 'light' ? 'hover:brightness-95' : 'hover:brightness-110'}`} style={{
             background: backgroundTheme === 'light'
               ? lightTheme.background
               : backgroundTheme === 'dark'
                 ? darkTheme.background
                 : '#000'
           }}>
-            <IoSettingsOutline className='w-5 h-5' />
+            <BsArrowLeft className='w-5 h-5' />
           </button>
+          <h1 className='text-xl font-bold tracking-tight'>
+            Topics
+          </h1>
         </div>
-        <nav className='flex justify-between w-full items-center'>
+        <nav className='flex w-full justify-between items-center'>
           <TabListButton
-            link='/explorer/tabs/for-you'
-            linkName='for-you'
-            extraLinkName='explorer'
-            name='For you'
+            link='/username/topics/followed'
+            linkName='followed'
+            extraLinkName='topics'
+            name='Followed'
             currentPage={currentPage}
           />
           <TabListButton
-            link='/explorer/tabs/trending'
-            linkName='trending'
-            name='Trending'
+            link='/username/topics/recommended'
+            linkName='recommended'
+            name='Suggested'
             currentPage={currentPage}
           />
           <TabListButton
-            link='/explorer/tabs/news'
-            linkName='news'
-            name='News'
-            currentPage={currentPage}
-          />
-          <TabListButton
-            link='/explorer/tabs/sports'
-            linkName='sports'
-            name='Sports'
-            currentPage={currentPage}
-          />
-          <TabListButton
-            link='/explorer/tabs/entertainment'
-            linkName='entertainment'
-            name='Entertainment'
+            link='/username/topics/not_interested'
+            linkName='not_interested'
+            name='Not Interested'
             currentPage={currentPage}
           />
         </nav>
       </div>
-      {children}
-    </div >
+      <div className='mt-20'>
+        {children}
+      </div>
+    </div>
   )
 }
 
-export default ExplorerLayout
+export default TopicsLayout
