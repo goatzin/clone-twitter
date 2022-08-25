@@ -4,6 +4,7 @@ import { colors } from '../libs/colors'
 interface ThemeValue {
   backgroundTheme: string
   colorTheme: string
+  hoverColorTheme: string
   handleBackground: () => any
   handleColors: () => any
 }
@@ -11,6 +12,7 @@ interface ThemeValue {
 export const ThemeContext = React.createContext<ThemeValue>({
   backgroundTheme: 'light',
   colorTheme: colors.default,
+  hoverColorTheme: colors.defaultHover,
   handleBackground: () => null,
   handleColors: () => null
 })
@@ -22,6 +24,7 @@ interface Props {
 const ThemeProvider: React.FC<Props> = ({ children }) => {
   const [backgroundTheme, setBackgroundTheme] = useState('light')
   const [colorTheme, setColorTheme] = useState(colors.default)
+  const [hoverColorTheme, setHoverColorTheme] = useState(colors.defaultHover)
   const handleBackground = useCallback(() => {
     if (backgroundTheme === 'light') {
       setBackgroundTheme('dark')
@@ -30,12 +33,12 @@ const ThemeProvider: React.FC<Props> = ({ children }) => {
     }
   }, [backgroundTheme, setBackgroundTheme])
   const handleColors = useCallback(() => {
-  }, [colorTheme, setColorTheme])
+  }, [setColorTheme, setHoverColorTheme])
 
   return (
     <ThemeContext.Provider value={{
       backgroundTheme, handleBackground,
-      colorTheme, handleColors
+      colorTheme, hoverColorTheme, handleColors
     }}>
       {children}
     </ThemeContext.Provider>

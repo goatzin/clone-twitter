@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "diagnostic-languageserver": "^1.14.2",
+    "embla-carousel-class-names": "^7.0.1",
+    "embla-carousel-react": "^7.0.1",
     "next": "12.2.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
