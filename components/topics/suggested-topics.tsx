@@ -3,9 +3,14 @@ import Link from 'next/link'
 import { ThemeContext } from '../../utils/theme'
 import { darkTheme, lightTheme } from '../../libs/colors'
 import CarouselTopics from './carousel'
+import { CarouselTopicItemWithX } from './carousel-item'
 
 const SuggestedTopics: React.FC = () => {
   const { backgroundTheme, colorTheme } = useContext(ThemeContext)
+  let names = []
+  for (let i = 0; i <= 20; ++i) {
+    names.push('something')
+  }
 
   return (
     <div className={`flex flex-col w-full border-t ${backgroundTheme === 'light' ? 'border-gray-100' : 'border-gray-800'}`}>
@@ -18,7 +23,26 @@ const SuggestedTopics: React.FC = () => {
         </span>
       </div>
       <CarouselTopics>
-        O_o
+        <CarouselTopicItemWithX
+          names={names}
+          rows={5}
+        />
+        <CarouselTopicItemWithX
+          names={names}
+          rows={5}
+        />
+        <CarouselTopicItemWithX
+          names={names}
+          rows={5}
+        />
+        <CarouselTopicItemWithX
+          names={names}
+          rows={5}
+        />
+        <CarouselTopicItemWithX
+          names={names}
+          rows={5}
+        />
       </CarouselTopics>
       <Link href='/home'>
         <a className={`w-full px-5 py-4 flex items-start ${backgroundTheme === 'light' ? 'hover:brightness-95' : 'hover:brightness-110'} duration-200`} style={{
@@ -32,6 +56,14 @@ const SuggestedTopics: React.FC = () => {
           More Topics
         </a>
       </Link>
+      <div className={`inline-block items-center w-full px-5 py-4 text-sm border-t ${backgroundTheme === 'light' ? 'border-gray-100' : 'border-gray-800'}`}>
+        Topics that you follow are shown here. To see all the things that Twitter thinks you're
+        interested in, check out &nbsp;
+        <a href='/home' style={{ color: colorTheme }}>
+          Your Twitter data.&nbsp;
+        </a>
+        You can also <a href='/home' style={{ color: colorTheme }}>learn more</a> about following Topics.
+      </div>
     </div>
   )
 }
