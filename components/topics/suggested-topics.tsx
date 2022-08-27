@@ -8,7 +8,7 @@ import { CarouselTopicItemWithX } from './carousel-item'
 const SuggestedTopics: React.FC = () => {
   const { backgroundTheme, colorTheme } = useContext(ThemeContext)
   let names = []
-  for (let i = 0; i <= 20; ++i) {
+  for (let i = 0; i <= 15; ++i) {
     names.push('something')
   }
 
